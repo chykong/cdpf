@@ -1,4 +1,4 @@
-##CDPF简介
+## CDPF简介
 
 Critc Development Plat Framework 简称CDPF，是技术研发中心开发的基础平台开发框架，包含各种开发标准、基础权限控制、常见应用场景示例等功能。
 
