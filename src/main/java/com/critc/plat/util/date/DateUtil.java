@@ -15,8 +15,9 @@ import java.util.*;
  * @date 2017-05-23
  */
 public class DateUtil {
-    private static final String defaultFormatStr = "yyyy-MM-dd";//系统默认的格式化字符串
-
+    private static final String defaultDateFormatStr = "yyyy-MM-dd";//系统默认的格式化字符串
+    private static final String defaultTimeFormatStr = "yyyy-MM-dd HH:mm:ss";//系统默认的格式化字符串
+    
     /**
      * 日期转字符串
      *
@@ -60,7 +61,7 @@ public class DateUtil {
      */
     public static String getSystemTime() {
         String strTime = "";
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        DateFormat df = new SimpleDateFormat(defaultTimeFormatStr);
         strTime = df.format(new Date());
         return strTime;
     }
@@ -74,7 +75,7 @@ public class DateUtil {
      */
     public static String getSystemDate() {
         String strDate = "";
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat df = new SimpleDateFormat(defaultDateFormatStr);
         strDate = df.format(new Date());
         return strDate;
     }
@@ -143,7 +144,7 @@ public class DateUtil {
      * @date 2017-05-23
      */
     public static String getOperaDate(String date, int dayNum) {
-        return getOperaDate(date, dayNum, defaultFormatStr);
+        return getOperaDate(date, dayNum, defaultDateFormatStr);
     }
 
     /**
@@ -180,7 +181,7 @@ public class DateUtil {
      * @date 2017-05-23
      */
     public static String getOperaMonth(String date, int monthNum) {
-        return getOperaMonth(date, monthNum, defaultFormatStr);
+        return getOperaMonth(date, monthNum, defaultDateFormatStr);
     }
 
     /**
@@ -213,7 +214,7 @@ public class DateUtil {
      * @date 2017-05-23
      */
     public static int getDateDifference(String date1, String date2) {
-        return getDateDifference(date1, date2, defaultFormatStr);
+        return getDateDifference(date1, date2, defaultDateFormatStr);
     }
 
     /**
@@ -266,7 +267,7 @@ public class DateUtil {
      */
     public static int getMonthDifference(String date1, String date2) {
         int result = 0;
-        SimpleDateFormat sdf = new SimpleDateFormat(defaultFormatStr);
+        SimpleDateFormat sdf = new SimpleDateFormat(defaultDateFormatStr);
         Calendar c1 = Calendar.getInstance();
         Calendar c2 = Calendar.getInstance();
         try {
@@ -293,7 +294,7 @@ public class DateUtil {
         cal.set(Calendar.DATE, 1);// 日，设为一号
         cal.add(Calendar.MONTH, 1);// 月份加一，得到下个月的一号
         cal.add(Calendar.DATE, -1);// 下一个月减一为本月最后一天
-        return new SimpleDateFormat(defaultFormatStr).format(cal.getTime());
+        return new SimpleDateFormat(defaultDateFormatStr).format(cal.getTime());
     }
 
     /**
@@ -308,7 +309,7 @@ public class DateUtil {
         cal.set(Calendar.YEAR, cal.get(Calendar.YEAR));// 年
         cal.set(Calendar.MONTH, cal.get(Calendar.MONTH));// 月，因为Calendar里的月是从0开始，所以要减1
         cal.set(Calendar.DATE, 1);// 日，设为一号
-        String df = new SimpleDateFormat(defaultFormatStr).format(cal.getTime());
+        String df = new SimpleDateFormat(defaultDateFormatStr).format(cal.getTime());
         return df;// 获得月初是几号
     }
 
@@ -325,7 +326,7 @@ public class DateUtil {
         cal.set(Calendar.MONTH, cal.get(Calendar.MONTH));// 月，因为Calendar里的月是从0开始，所以要减1
         cal.set(Calendar.DATE, 1);// 日，设为一号
         cal.add(Calendar.MONTH, -1);// 月份减一，得到上个月的一号
-        String df = new SimpleDateFormat(defaultFormatStr).format(cal.getTime());
+        String df = new SimpleDateFormat(defaultDateFormatStr).format(cal.getTime());
         return df;// 获得月初是几号
     }
 
@@ -343,7 +344,7 @@ public class DateUtil {
         cal.set(Calendar.DATE, 1);// 日，设为一号
         cal.add(Calendar.MONTH, 2);// 月份加一，得到下下个月的一号
         cal.add(Calendar.DATE, -1);// 下下一个月减一为下个月最后一天
-        String df = new SimpleDateFormat(defaultFormatStr).format(cal.getTime());
+        String df = new SimpleDateFormat(defaultDateFormatStr).format(cal.getTime());
         return df;// 获得月末是几号
     }
 
@@ -358,7 +359,7 @@ public class DateUtil {
      */
     public static String getLastDayOfMonth(String date) {
         Date dt = null;
-        SimpleDateFormat df = new SimpleDateFormat(defaultFormatStr);
+        SimpleDateFormat df = new SimpleDateFormat(defaultDateFormatStr);
         try {
             dt = df.parse(date);
         } catch (ParseException e) {
@@ -384,7 +385,7 @@ public class DateUtil {
      * @date 2017-05-23
      */
     public static List<String> getDayList(String starDate, String endDate) {
-        SimpleDateFormat format = new SimpleDateFormat(defaultFormatStr);
+        SimpleDateFormat format = new SimpleDateFormat(defaultDateFormatStr);
         List<String> dayList = new ArrayList<String>();
         if (starDate.equals(endDate)) {
             dayList.add(starDate);
