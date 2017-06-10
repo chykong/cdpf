@@ -1,5 +1,6 @@
 package com.critc.plat.core.dao;
 
+import com.critc.plat.util.model.ComboboxVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -192,5 +193,24 @@ public class BaseDao<T, S> {
         return namedParameterJdbcTemplate.queryForObject(sql, new BeanPropertySqlParameterSource(s), Integer.class);
     }
 
+    /**
+     * 下拉框列表
+     *
+     * @param sql
+     * @return
+     */
+    protected List<ComboboxVO> listCombobox(String sql) {
+        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(ComboboxVO.class));
+    }
+
+    /**
+     * 下拉框列表
+     *
+     * @param sql
+     * @return
+     */
+    protected List<ComboboxVO> listCombobox(String sql, Object... objects) {
+        return jdbcTemplate.query(sql, objects, new BeanPropertyRowMapper<>(ComboboxVO.class));
+    }
 
 }

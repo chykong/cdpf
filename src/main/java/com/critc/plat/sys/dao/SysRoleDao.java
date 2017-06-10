@@ -3,10 +3,8 @@ package com.critc.plat.sys.dao;
 import com.critc.plat.core.dao.BaseDao;
 import com.critc.plat.sys.model.SysRole;
 import com.critc.plat.util.model.ComboboxVO;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -60,24 +58,19 @@ public class SysRoleDao extends BaseDao<SysRole, SysRole> {
      * @return
      */
     public List<SysRole> list() {
-        String sql = "";
-        List<SysRole> list = new ArrayList<>();
-        sql = "select t.* from t_sys_role t order by id ";
-        list = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(SysRole.class));
-        return list;
+        String sql = "select t.* from t_sys_role t order by id ";
+        return list(sql);
     }
 
     /**
-     * 角色列表
+     * 角色下拉框
      *
      * @return
      */
     public List<ComboboxVO> listCombo() {
         String sql = "select id value,name content from t_sys_role where 1=1 order by id ";
-        List<ComboboxVO> list = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(ComboboxVO.class));
-        return list;
+        return listCombobox(sql);
     }
-
 
 
 }
