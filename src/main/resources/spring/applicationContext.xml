@@ -14,7 +14,7 @@
 	http://www.springframework.org/schema/tx/spring-tx.xsd
 	"
        default-autowire="byName" default-lazy-init="true">
-    <bean class="com.critc.util.spring.SpringContextHolder"
+    <bean class="com.critc.plat.core.spring.SpringContextHolder"
           lazy-init="false"/>
 
     <context:annotation-config/>
@@ -23,7 +23,7 @@
 
     <!-- spring从properties里面读取jdbc配置文件 -->
     <context:property-placeholder
-            ignore-unresolvable="true" location="classpath:/conf/application.properties"/>
+            ignore-unresolvable="true" location="classpath:/application.properties"/>
 
     <bean id="logFilter" class="com.alibaba.druid.filter.logging.Slf4jLogFilter">
         <property name="statementExecutableSqlLogEnable" value="true"/>
@@ -63,7 +63,7 @@
     </bean>
     <!--注入namedParameterJdbcTemplate -->
     <bean id="namedParameterJdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
-        <property name="dataSource" ref="dataSource"/>
+        <constructor-arg ref="dataSource"></constructor-arg>
     </bean>
 
 
@@ -117,7 +117,7 @@
     </aop:config>
 
     <!--设置公共参数 -->
-    <bean id="pubConfig" class="com.critc.util.config.PubConfig">
+    <bean id="pubConfig" class="com.critc.plat.core.pub.PubConfig">
         <property name="imageServer" value="${imageServer}"/>
         <property name="imageUploadPath" value="${imageUploadPath}"/>
         <property name="staticServer" value="${staticServer}"/>

@@ -116,8 +116,8 @@ public class SysRoleService {
      * @return
      */
     public String checkResourceAndFunction(int roleId) {
-        List<SysRoleResource> listRoleResource = sysRoleresourceDao.listRoleResource(roleId,1);// 角色模块列表
-        List<SysRoleResource> listRoleFunction = sysRoleresourceDao.listRoleResource(roleId,2);// 角色对应功能
+        List<SysRoleResource> listRoleResource = sysRoleresourceDao.listRoleResource(roleId, 1);// 角色模块列表
+        List<SysRoleResource> listRoleFunction = sysRoleresourceDao.listRoleResource(roleId, 2);// 角色对应功能
         StringBuilder sb = new StringBuilder();
         for (SysRoleResource sysRoleResource : listRoleResource) {
             sb.append("$('#mod_" + sysRoleResource.getResourceId() + "').prop('checked',true);\r\n");
@@ -141,41 +141,50 @@ public class SysRoleService {
     }
 
     /**
-     * 判断按钮是否在角色中
+     * 根据roleId来获取该角色具有的功能按钮
      *
-     * @param button_code
+     * @param roleId
      * @return
      */
-    public boolean checkBtnPrivilege(String button_code) {
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
-                .getRequest();
-        UserSession userSession = SessionUtil.getUserSession(request);
-        HashMap<String, String> hashRoleFunction = EhCacheUtil.get("sysCache",
-                "hashRoleFunction_" + userSession.getRole_id());
-        if (hashRoleFunction == null) {
-            System.out.println("初始化角色对应功能" + userSession.getRole_id());
-//            hashRoleFunction = sysResourceDao.hashRoleFunctionByRole_id(userSession.getRole_id());// 角色对应功能hash
-            EhCacheUtil.put("sysCache", "hashRoleFunction_" + userSession.getRole_id(), hashRoleFunction);
+    public HashMap<String, Integer> getRoleFunctions(int roleId) {
+        HashMap<String, Integer> hashFunctions = EhCacheUtil.get("sysCache", "roleFunctions" + roleId);
+        if (hashFunctions == null) {
+            hashFunctions = new HashMap<>();
+            List<SysRoleResource> listRoleResource = sysRoleresourceDao.listRoleResource(roleId, 2);
+            for (SysRoleResource sysRoleResource : listRoleResource) {
+                hashFunctions.put(sysRoleResource.getResourceCode(), sysRoleResource.getResourceId());
+            }
         }
-        if (hashRoleFunction.containsKey(button_code))
-            return true;
-        else
-            return false;
+        return hashFunctions;
+    }
+
+
+    /**
+     * 判断按钮是否在角色中
+     *
+     * @param buttonCode
+     * @return
+     */
+    public boolean checkBtnPrivilege(String buttonCode) {
+        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        UserSession userSession = SessionUtil.getUserSession(request);
+        HashMap<String, Integer> hashRoleFunction = getRoleFunctions(userSession.getRoleId());
+        return true;// hashRoleFunction.containsKey(buttonCode);
     }
 
     /**
      * 校验按钮权限，防止不通过浏览器提交
      *
-     * @param role_id
+     * @param roleId
      * @param path
      * @return
      */
-    public boolean checkAuthority(int role_id, String path) {
-        HashMap<String, String> hashRoleFunction = EhCacheUtil.get("sysCache", "hashRoleFunction_" + role_id);
+    public boolean checkAuthority(int roleId, String path) {
+        HashMap<String, String> hashRoleFunction = EhCacheUtil.get("sysCache", "hashRoleFunction_" + roleId);
         if (hashRoleFunction == null) {
-            System.out.println("初始化角色对应功能" + role_id);
+            System.out.println("初始化角色对应功能" + roleId);
 //            hashRoleFunction = sysFunctionDao.hashRoleFunctionByRole_id(role_id);// 角色对应功能hash
-            EhCacheUtil.put("sysCache", "hashRoleFunction_" + role_id, hashRoleFunction);
+            EhCacheUtil.put("sysCache", "hashRoleFunction_" + roleId, hashRoleFunction);
         }
         if (hashRoleFunction.containsValue(path))
             return true;
@@ -194,7 +203,7 @@ public class SysRoleService {
         if (menu == null) {
             StringBuffer sb = new StringBuffer();
             List<SysResource> listResource = sysResourceDao.list();// 模块列表
-            List<SysRoleResource> listRoleResource = sysRoleresourceDao.listRoleResource(role_id,1);// 角色模块列表
+            List<SysRoleResource> listRoleResource = sysRoleresourceDao.listRoleResource(role_id, 1);// 角色模块列表
             List<Integer> displayResourceIdList = new ArrayList<>();
             for (SysRoleResource sysRoleResource : listRoleResource) {
                 displayResourceIdList.add(sysRoleResource.getResourceId());

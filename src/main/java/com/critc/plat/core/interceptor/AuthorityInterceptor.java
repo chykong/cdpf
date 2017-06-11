@@ -80,7 +80,7 @@ public class AuthorityInterceptor implements HandlerInterceptor {
      */
     public void logOperation(String path, String parameters, UserSession us) {
         String log = "";
-        log = "[OPERALOG]" + "-[" + us.getUser_ip() + "]" + "-[" + DateUtil.getSystemTime() + "]-" + "[" + us.getUser_name() + "]-" + "[INFO]-" + path + "-" + parameters;
+        log = "[OPERALOG]" + "-[" + us.getUserIp() + "]" + "-[" + DateUtil.getSystemTime() + "]-" + "[" + us.getUsername() + "]-" + "[INFO]-" + path + "-" + parameters;
         logger.info(log);
     }
 

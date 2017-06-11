@@ -14,10 +14,14 @@
     <sitemesh:write property='head'/>
 </head>
 <body class="no-skin">
-<%@ include file="../common/top.jsp"%>
+<%@ include file="../common/header.jspf" %>
 <div class="main-container" id="main-container">
-    <%@ include file="../common/menu.jsp" %>
-    <sitemesh:write property='body'/>
+    <%@ include file="../common/menu.jspf" %>
+    <div class="main-content">
+        <div class="main-content-inner">
+            <sitemesh:write property='body'/>
+        </div>
+    </div>
 </div>
 <%@include file="../common/scripts.jspf" %>
 </body>

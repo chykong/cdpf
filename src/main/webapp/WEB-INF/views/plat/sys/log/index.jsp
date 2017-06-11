@@ -35,18 +35,18 @@
                                 <table class="searchField" style="margin: 4px; padding: 4px;">
                                     <tr>
                                         <td>用户：</td>
-                                        <td><form:select path="sysLogSearchVO.user_id" class="form-control input-small"
-                                                         id="user_id">
+                                        <td><form:select path="sysLogSearchVO.userId" class="form-control input-small"
+                                                         id="userId">
                                             <form:option value="" label="-选择-"/>
                                             <form:options items="${listUser}" itemValue="id" itemLabel="realname"/>
                                         </form:select></td>
                                         <td>起止日期：</td>
-                                        <td><input type="text" id="s_date" class="form-control input-small"
-                                                   placeholder="" value="${sysLogSearchVO.s_date }">
+                                        <td><input type="text" id="startDate" class="form-control input-small"
+                                                   placeholder="" value="${sysLogSearchVO.startDate }">
                                         </td>
                                         <td>至</td>
-                                        <td><input type="text" id="e_date" class="form-control input-small"
-                                                   placeholder="" value="${sysLogSearchVO.e_date }"></td>
+                                        <td><input type="text" id="endDate" class="form-control input-small"
+                                                   placeholder="" value="${sysLogSearchVO.endDate }"></td>
                                         <td>
                                             <button class="btn btn-primary btn-sm" id="btnSearch">
                                                 <i class="ace-icon fa fa-search"></i> 查询
@@ -80,10 +80,10 @@
                             <tr>
                                 <td>${st.index+1 }</td>
                                 <td>${sysLog.realname }</td>
-                                <td><fmt:formatDate value="${sysLog.opera_date}" pattern="yyyy-MM-dd HH:mm"/></td>
-                                <td>${sysLog.module_name }</td>
-                                <td>${sysLog.opera_name }</td>
-                                <td>${sysLog.opera_url }</td>
+                                <td><fmt:formatDate value="${sysLog.operaDate}" pattern="yyyy-MM-dd HH:mm"/></td>
+                                <td>${sysLog.moduleName }</td>
+                                <td>${sysLog.operaName }</td>
+                                <td>${sysLog.operaUrl }</td>
                             </tr>
                         </c:forEach>
                         </tbody>
@@ -101,37 +101,32 @@
     </div>
 </div>
 <!-- /.main-container -->
-<link rel="stylesheet" type="text/css" href="${staticServer }/assets/datetimepicker/jquery.datetimepicker.css"/>
-<script src="${staticServer }/assets/datetimepicker/jquery.datetimepicker.js" type="text/javascript"></script>
-<script type="text/javascript">
-				$('#s_date').datetimepicker({
-					lang : 'ch',
-					timepicker : false,
-					format : 'Y-m-d',
-					formatDate : 'Y-m-d'
-				});
-				$('#e_date').datetimepicker({
-					lang : 'ch',
-					timepicker : false,
-					format : 'Y-m-d',
-					formatDate : 'Y-m-d'
-				});
 
-</script>
 <script type="text/javascript">
 				$(function() {
 					$("#btnSearch").bind('click', searchUser);
+
+				$('#startDate').datetimepicker({
+					lang : 'ch',
+					timepicker : false,
+					format : 'Y-m-d'
+				});
+				$('#endDate').datetimepicker({
+					lang : 'ch',
+					timepicker : false,
+					format : 'Y-m-d'
+				});
 				})
 
 				// 查询方法
 				var searchUser = function() {
 					var url = "index.htm?";
-					if ($("#user_id").val() != '')
-						url += "user_id=" + $("#user_id").val();
-					if ($("#s_date").val() != '')
-						url += "&s_date=" + $("#s_date").val();
-					if ($("#e_date").val() != '')
-						url += "&e_date=" + $("#e_date").val();
+					if ($("#userId").val() != '')
+						url += "userId=" + $("#userId").val();
+					if ($("#startDate").val() != '')
+						url += "&startDate=" + $("#startDate").val();
+					if ($("#endDate").val() != '')
+						url += "&endDate=" + $("#endDate").val();
 					window.location = encodeURI(url);
 				}
 

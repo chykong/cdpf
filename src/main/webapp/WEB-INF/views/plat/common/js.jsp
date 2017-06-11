@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!-- basic scripts -->
 <script src="${staticServer }/assets/components/bootstrap/dist/js/bootstrap.js?versionNo=${versionNo}"></script>
 <script src="${staticServer }/assets/components/jquery-validation/dist/jquery.validate.js?versionNo=${versionNo}" type="text/javascript"></script>

@@ -18,7 +18,7 @@
 				</li>
 				<!-- #section:basics/navbar.user_menu -->
 				<li class="light-blue dropdown-modal"><a data-toggle="dropdown" href="#" class="dropdown-toggle"> <img class="nav-user-photo"
-						src="${staticServer }/assets/avatars/user.jpg" alt="Jason's Photo" /> <span class="user-info"> <small>
+						src="${staticServer }/assets/ace1.4/images/avatars/user.jpg" alt="Jason's Photo" /> <span class="user-info"> <small>
 								${sessionScope.userSession.role_name },</small> ${sessionScope.userSession.realname }
 					</span> <i class="ace-icon fa fa-caret-down"></i>
 				</a>

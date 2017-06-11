@@ -36,10 +36,10 @@ public class SysResourceController extends BaseController {
     @RequestMapping("/index")
     public ModelAndView index(HttpServletRequest request) {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("/sys/resource");
+        mv.setViewName("/plat/sys/resource/index");
         List<SysResource> list = sysResourceService.list();
         mv.addObject("list", list);// 把获取的记录放到mv里面
-        String url = "/sys/resource/index.htm?";
+        String url = pubConfig.getDynamicServer() + "/sys/resource/index.htm?";
         mv.addObject("backUrl", StringUtil.encodeUrl(url));
         return mv;
     }
@@ -57,7 +57,7 @@ public class SysResourceController extends BaseController {
         ModelAndView mv = new ModelAndView();
         String ztree = sysResourceService.createZtreeByModule();//模块列表
         mv.addObject("ztree", ztree);
-        mv.setViewName("/sys/moduleAdd");
+        mv.setViewName("/plat/sys/resource/add");
         BackUrlUtil.setBackUrl(mv, request);// 设置返回的url
         return mv;
     }
@@ -77,7 +77,7 @@ public class SysResourceController extends BaseController {
         String ztree = sysResourceService.createZtreeByModule();
         mv.addObject("ztree", ztree);
         mv.addObject("sysResource", sysResource);
-        mv.setViewName("/sys/moduleUpdate");
+        mv.setViewName("/plat/sys/resource/update");
         BackUrlUtil.setBackUrl(mv, request);// 设置返回的url
         return mv;
     }

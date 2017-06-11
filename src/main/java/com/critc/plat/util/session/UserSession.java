@@ -11,38 +11,48 @@ import java.io.Serializable;
 public class UserSession implements Serializable {
 
     private static final long serialVersionUID = 1629527703944211785L;
-    private int user_id;//用户id
-    private String user_ip;//用户IP
+    private int userId;//用户id
+    private String userIp;//用户IP
 
-    private String user_name;//用户名  即登录账号
+    private String username;//用户名  即登录账号
     private String realname;//真实姓名
-    private int role_id;//角色id
-    private String role_name;//角色名称
+    private int roleId;//角色id
+    private String roleName;//角色名称
 
-    private int type;//类型
-
-    public int getUser_id() {
-        return user_id;
+    @Override
+    public String toString() {
+        return "UserSession{" +
+                "userId=" + userId +
+                ", userIp='" + userIp + '\'' +
+                ", username='" + username + '\'' +
+                ", realname='" + realname + '\'' +
+                ", roleId=" + roleId +
+                ", roleName='" + roleName + '\'' +
+                '}';
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public int getUserId() {
+        return userId;
     }
 
-    public String getUser_ip() {
-        return user_ip;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public void setUser_ip(String user_ip) {
-        this.user_ip = user_ip;
+    public String getUserIp() {
+        return userIp;
     }
 
-    public String getUser_name() {
-        return user_name;
+    public void setUserIp(String userIp) {
+        this.userIp = userIp;
     }
 
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getRealname() {
@@ -53,46 +63,19 @@ public class UserSession implements Serializable {
         this.realname = realname;
     }
 
-    public int getRole_id() {
-        return role_id;
+    public int getRoleId() {
+        return roleId;
     }
 
-    public void setRole_id(int role_id) {
-        this.role_id = role_id;
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
     }
 
-    public String getRole_name() {
-        return role_name;
+    public String getRoleName() {
+        return roleName;
     }
 
-    public void setRole_name(String role_name) {
-        this.role_name = role_name;
-    }
-
-
-    public static long getSerialversionuid() {
-        return serialVersionUID;
-    }
-
-    public int getType() {
-        return type;
-    }
-
-    public void setType(int type) {
-        this.type = type;
-    }
-
-
-    @Override
-    public String toString() {
-        return "UserSession{" +
-                "user_id=" + user_id +
-                ", user_ip='" + user_ip + '\'' +
-                ", user_name='" + user_name + '\'' +
-                ", realname='" + realname + '\'' +
-                ", role_id=" + role_id +
-                ", role_name='" + role_name + '\'' +
-                ", type=" + type +
-                '}';
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
     }
 }

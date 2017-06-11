@@ -8,7 +8,7 @@
 <%@ include file="header.jsp"%>
 </head>
 
-<body class="no-skin">
+<body>
 	<%@ include file="top.jsp"%>
 
 	<div class="main-container" id="main-container">

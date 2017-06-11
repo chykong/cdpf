@@ -12,6 +12,7 @@ public class SysRoleResource {
     private int roleId;//角色id
     @Column(name = "resource_id")
     private int resourceId;//资源id
+    private String resourceCode;//角色代码
 
     @Override
     public String toString() {
@@ -19,7 +20,16 @@ public class SysRoleResource {
                 "id=" + id +
                 ", roleId=" + roleId +
                 ", resourceId=" + resourceId +
+                ", resourceCode='" + resourceCode + '\'' +
                 '}';
+    }
+
+    public String getResourceCode() {
+        return resourceCode;
+    }
+
+    public void setResourceCode(String resourceCode) {
+        this.resourceCode = resourceCode;
     }
 
     public int getId() {
