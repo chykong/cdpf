@@ -11,6 +11,7 @@ public class SysRole {
     private int id;// 角色id
     private String name;// 角色名称
     private String description;//描述
+    private int displayOrder;//排序
 
     @Column(name = "created_by")
     private String createdBy;//创建人
@@ -27,11 +28,20 @@ public class SysRole {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
+                ", displayOrder=" + displayOrder +
                 ", createdBy='" + createdBy + '\'' +
                 ", createdAt=" + createdAt +
                 ", lastModifiedBy='" + lastModifiedBy + '\'' +
                 ", lastModifiedAt=" + lastModifiedAt +
                 '}';
+    }
+
+    public int getDisplayOrder() {
+        return displayOrder;
+    }
+
+    public void setDisplayOrder(int displayOrder) {
+        this.displayOrder = displayOrder;
     }
 
     public String getCreatedBy() {

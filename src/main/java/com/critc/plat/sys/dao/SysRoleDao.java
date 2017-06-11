@@ -21,7 +21,8 @@ public class SysRoleDao extends BaseDao<SysRole, SysRole> {
      * @return
      */
     public int add(SysRole sysRole) {
-        String sql = "insert into t_sys_role(id,name,description,created_by,created_at)" + " values(seq_t_sys_role.nextval,:name,:description,createdBy,createdAt)";
+        String sql = "insert into t_sys_role(id,name,description,display_order,created_by,created_at)" +
+                " values(seq_t_sys_role.nextval,:name,:description,:displayOrder,:createdBy,sysdate)";
         return insertForId(sql, sysRole, "id");
     }
 
@@ -32,7 +33,7 @@ public class SysRoleDao extends BaseDao<SysRole, SysRole> {
      * @return
      */
     public int update(SysRole sysRole) {
-        String sql = "update t_sys_role set name=:name,description=:description,last_modified_by=:lastModifiedBy,last_modified_at=:lastModifiedAt where id=:id";
+        String sql = "update t_sys_role set name=:name,description=:description,display_order=:displayOrder,last_modified_by=:lastModifiedBy,last_modified_at=sysdate where id=:id";
         return update(sql, sysRole);
     }
 
@@ -58,7 +59,7 @@ public class SysRoleDao extends BaseDao<SysRole, SysRole> {
      * @return
      */
     public List<SysRole> list() {
-        String sql = "select t.* from t_sys_role t order by id ";
+        String sql = "select t.* from t_sys_role t order by display_order asc ";
         return list(sql);
     }
 

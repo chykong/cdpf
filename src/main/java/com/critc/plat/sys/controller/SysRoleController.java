@@ -42,11 +42,11 @@ public class SysRoleController extends BaseController {
     @RequestMapping("/index")
     public ModelAndView index(HttpServletRequest request) {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("/sys/role");
+        mv.setViewName("/plat/sys/role/index");
         UserSession userSession = SessionUtil.getUserSession(request);
         List<SysRole> list = sysRoleService.list();
         mv.addObject("list", list);
-        String url = "/sys/role/index.htm?";
+        String url = pubConfig.getDynamicServer() + "/sys/role/index.htm?";
         mv.addObject("backUrl", StringUtil.encodeUrl(url));
         return mv;
     }
@@ -62,9 +62,9 @@ public class SysRoleController extends BaseController {
     @RequestMapping("/toAdd")
     public ModelAndView toAdd(HttpServletRequest request, HttpServletResponse response, SysRole sysRole) {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("/sys/roleAdd");
+        mv.setViewName("/plat/sys/role/add");
         List<SysResource> listResource = sysResourceService.list();//所有菜单
-        mv.addObject("listResource", listResource);
+        mv.addObject("listModule", listResource);
         List<SysResource> listFunction = sysResourceService.listByType(2);//所有功能按钮
         mv.addObject("listFunction", listFunction);
         BackUrlUtil.setBackUrl(mv, request);// 设置返回的url
@@ -84,9 +84,9 @@ public class SysRoleController extends BaseController {
         ModelAndView mv = new ModelAndView();
         SysRole sysRole = sysRoleService.get(id);
         mv.addObject("sysRole", sysRole);
-        mv.setViewName("/sys/roleUpdate");
+        mv.setViewName("/plat/sys/role/update");
         List<SysResource> listResource = sysResourceService.list();//所有模块
-        mv.addObject("listResource", listResource);
+        mv.addObject("listModule", listResource);
         List<SysResource> listFunction = sysResourceService.listByType(2);//所有功能按钮
         mv.addObject("listFunction", listFunction);
         String checkButton = sysRoleService.checkResourceAndFunction(sysRole.getId());

@@ -30,7 +30,7 @@ public class SysRoleresourceDao extends BaseDao<SysRoleResource, SysRoleResource
      * @param roleId
      */
     public void deleteRoleResource(int roleId) {
-        String sql = "delete from t_sys_resource where role_id=?";
+        String sql = "delete from t_sys_roleresource where role_id=?";
         delete(sql, roleId);
     }
 
@@ -41,7 +41,7 @@ public class SysRoleresourceDao extends BaseDao<SysRoleResource, SysRoleResource
      * @param resourceId
      */
     public void addRoleResource(int roleId, int resourceId) {
-        String sql = "insert into t_sys_resource(id,role_id,module_id) values(seq_t_sys_resource.nextval,?,?)";
+        String sql = "insert into t_sys_roleresource(id,role_id,resource_id) values(seq_t_sys_resource.nextval,?,?)";
         update(sql, roleId, resourceId);
     }
 }

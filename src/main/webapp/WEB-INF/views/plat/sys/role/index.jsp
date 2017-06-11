@@ -67,8 +67,8 @@
                         <td>${st.index+1 }</td>
                         <td>${sysRole.name }</td>
                         <td>${sysRole.description }</td>
-                        <td>${sysRole.create_person }</td>
-                        <th width=120><fmt:formatDate value="${sysRole.create_date}"
+                        <td>${sysRole.createdBy }</td>
+                        <th width=120><fmt:formatDate value="${sysRole.createdAt}"
                                                       pattern="yyyy-MM-dd HH:mm"/></th>
                         <td><c:if test="${critc:isP('SysRoleUpdate')}">
                             <a href="toUpdate.htm?id=${sysRole.id }&backUrl=${backUrl}"> 修改 </a>
@@ -88,16 +88,12 @@
 </div>
 <script type="text/javascript">
 				$(function() {
-					$("#btnSearch").bind('click', searchModule);
+					$("#btnSearch").bind('click', searchRole);
 					$("#btnAdd").bind('click', addRole);
-
-					$("#treeTable").treeTable({
-						expandLevel : 3
-					});
 				})
 
 				// 查询方法
-				var searchModule = function() {
+				var searchRole = function() {
 					var url = "index.htm?";
 					window.location = encodeURI(url);
 				}
@@ -113,6 +109,7 @@
 				var addRole = function(id) {
 					window.location = 'toAdd.htm?backUrl=${backUrl }';
 				}
+
 
 
 </script>

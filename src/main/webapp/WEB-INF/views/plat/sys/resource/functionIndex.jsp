@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ include file="../../common/taglib.jsp" %>
 <head>
-    <title>${webTitle }-功能管理</title>
+    <title>功能管理</title>
 </head>
 
 <body>

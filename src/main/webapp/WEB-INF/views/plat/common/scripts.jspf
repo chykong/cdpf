@@ -19,3 +19,4 @@
 <!-- page specific plugin scripts -->
 <link rel="stylesheet" type="text/css" href="${staticServer }/assets/datetimepicker2.1.9/jquery.datetimepicker.css"/>
 <script src="${staticServer }/assets/datetimepicker2.1.9/jquery.datetimepicker.js" type="text/javascript"></script>
+<script src="${staticServer }/assets/ace1.4_components/jquery-validation/dist/jquery.validate.js" type="text/javascript"></script>

@@ -26,6 +26,7 @@ public class SessionUtil {
             userSession.setRoleId(1);
             userSession.setUserId(1);
             userSession.setUsername("admin");
+            userSession.setRealname("admin");
             return userSession;
 //            return null;
         }
@@ -38,10 +39,6 @@ public class SessionUtil {
      * @return
      */
     public static String getRealname(HttpServletRequest request) {
-        if (request.getSession().getAttribute("userSession") != null)
-            return getUserSession(request).getRealname();
-        else {
-            return "";
-        }
+        return getUserSession(request).getRealname();
     }
 }
