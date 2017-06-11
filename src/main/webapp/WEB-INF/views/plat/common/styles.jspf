@@ -1,0 +1,16 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<link rel="stylesheet" href="${staticServer}/assets/ace1.4/css/bootstrap/bootstrap.css"/>
+<link rel="stylesheet" href="${staticServer}/assets/ace1.4/font-awesome/font-awesome.css"/>
+<link rel="stylesheet" href="${staticServer}/assets/ace1.4/css/ace-fonts.css"/>
+<!-- ace styles -->
+<link rel="stylesheet" href="${staticServer}/assets/ace1.4/css/ace.css" class="ace-main-stylesheet"
+      id="main-ace-style"/>
+<link rel="stylesheet" href="${staticServer}/assets/ace1.4/css/ace-skins.css"/>
+<%--
+<link rel="stylesheet" href="${staticServer}/assets/ace1.4/css/ace-rtl.css"/>
+--%>
+<link rel="stylesheet" href="${staticServer}/assets/ace1.4/css/common.css"/>
+<script src="${staticServer}/assets/ace1.4/ace-extra.js"></script>
+<script src='${staticServer}/assets/ace1.4/js/jquery/jquery.js"></script>
+<link rel="shortcut icon" href="${staticServer}/assets/ace1.4/images/favicon.ico" />"/>

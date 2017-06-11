@@ -31,7 +31,9 @@
         <jedis.version>2.9.0</jedis.version>
         <dom4j.version>2.0.0</dom4j.version>
         <persistent-api.version>2.2.1</persistent-api.version>
+        <sitemesh.version>3.0.1</sitemesh.version>
         <jdk.version>1.8</jdk.version>
+
         <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
         <maven-war-plugin.version>2.1.1</maven-war-plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -225,6 +227,12 @@
             <groupId>io.ebean</groupId>
             <artifactId>persistence-api</artifactId>
             <version>${persistent-api.version}</version>
+        </dependency>
+        <!--sitemesh-->
+        <dependency>
+            <groupId>org.sitemesh</groupId>
+            <artifactId>sitemesh</artifactId>
+            <version>${sitemesh.version}</version>
         </dependency>
     </dependencies>
 

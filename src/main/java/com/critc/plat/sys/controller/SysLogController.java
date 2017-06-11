@@ -52,7 +52,7 @@ public class SysLogController extends BaseController {
         mv.addObject("pageNavigate", pageNavigate);// 设置分页的变量
         mv.addObject("list", list);// 把获取的记录放到mv里面
         mv.addObject("listUser", sysUserService.listAll());// 用户列表
-        mv.setViewName("/sys/log");// 跳转至指定页面
+        mv.setViewName("/plat/sys/log/index");// 跳转至指定页面
         BackUrlUtil.createBackUrl(mv, request, url);// 设置返回url
         return mv;
     }
