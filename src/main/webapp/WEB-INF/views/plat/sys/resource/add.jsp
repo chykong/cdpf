@@ -2,7 +2,7 @@
 <%@ include file="../../common/taglib.jsp" %>
 
 <head>
-    <title>模块管理</title>
+    <title>资源管理</title>
     <link href="${staticServer }/assets/zTree3.5/css/zTreeStyle/metro.css" rel="stylesheet" type="text/css"/>
 </head>
 
@@ -12,16 +12,15 @@
     <ul class="breadcrumb">
         <li><i class="ace-icon fa fa-home home-icon"></i> <a href="#">首页</a></li>
         <li class="active">系统管理</li>
-        <li class="active">模块管理</li>
+        <li class="active">资源管理</li>
     </ul>
 </div>
 
-<!-- /section:basics/content.breadcrumbs -->
 <div class="page-content">
     <div class="page-header">
         <h1>
-            模块管理
-            <small><i class="ace-icon fa fa-angle-double-right"></i> 新增模块
+            资源管理
+            <small><i class="ace-icon fa fa-angle-double-right"></i> 新增资源
             </small>
         </h1>
     </div>
@@ -42,24 +41,24 @@
                     <label class="col-sm-3 control-label">类型：</label>
                     <div class="col-sm-9 ">
                         <select if="type" name="type" class="col-xs-10 col-sm-5">
-                            <option value="1">模块</option>
-                            <option value="2">功能</option>
+                            <option value="1" <c:if test="${sysResource.type eq 1}"> selected </c:if>>模块</option>
+                            <option value="2" <c:if test="${sysResource.type eq 2}"> selected </c:if>>功能</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label">上级节点：</label>
                     <div class="col-sm-9">
-                        <input id="parentId" type="hidden" name="parentId" readonly="readonly"
-                               class="col-xs-10 col-sm-5" placeholder="" value="">
+                        <input id="parentId" type="hidden" name="parentId"
+                               class="col-xs-10 col-sm-5" placeholder="" value="${sysResource.parentId}">
                         <input id="parentName" type="text" name="parentName" readonly="readonly"
-                               class="col-xs-10 col-sm-5" placeholder="" value="">
+                               class="col-xs-10 col-sm-5" placeholder="" value="${sysResource.parentName}">
                         <span class="input-group-btn">
 											<button type="button" class="btn btn-primary btn-sm"
                                                     onclick="javascript:showSelTree()">
 												<span class="ace-icon fa fa-search icon-on-right bigger-110"></span> 选择
-											</button> <label id="parentIdTip"></label>
-										</span> </span>
+											</button><label id="parentIdTip"></label>
+										</span>
                     </div>
                 </div>
                 <div class="form-group">
@@ -76,21 +75,20 @@
                                value=""><label id="urlTip"></label>
                     </div>
                 </div>
-                <div class="form-group">
-
+                <div class="form-group" id="divTarget">
                     <label class="col-sm-3 control-label">操作目标：</label>
                     <div class="col-sm-9 ">
                         <select name="target" class="col-xs-10 col-sm-5">
                             <option value="_self">_self</option>
                             <option value="_blank">_blank</option>
-                        </select> <label id="targetTip"></label>
+                        </select>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group" id="divIconImg">
                     <label class="col-sm-3 control-label">图标：</label>
                     <div class="col-sm-9">
                         <input id="iconImg" type="text" name="iconImg" class="col-xs-10 col-sm-5" placeholder=""
-                               value=""><label id="iconImgTip"></label>
+                               value="">
                     </div>
                 </div>
                 <div class="form-group">
@@ -140,11 +138,8 @@
                 <button type="button" class="btn " data-dismiss="modal">取消</button>
             </div>
         </div>
-        <!-- /.modal-content -->
     </div>
-    <!-- /.modal-dialog -->
 </div>
-<!-- /.main-container -->
 <script src="${staticServer }/assets/zTree3.5/js/jquery.ztree.all-3.5.min.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -184,6 +179,15 @@
 				    }
 				    
 					$(document).ready(function() {
+
+					    //如果为新增功能，则不显示图标和target
+					    var type='${sysResource.type}';
+					    if(type==2)
+					    {
+					        $("#divIconImg").hide();
+					        $("#divTarget").hide();
+					    }
+
 						$("#resouceForm").validate({
 							debug : true,
 							errorElement : "label",
@@ -220,10 +224,6 @@
 							}
 						});
 					});
-
-
-
-
 
 </script>
 </body>
