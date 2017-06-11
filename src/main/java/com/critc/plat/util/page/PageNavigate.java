@@ -1,5 +1,7 @@
 package com.critc.plat.util.page;
 
+import com.critc.plat.util.global.GlobalConst;
+
 /**
  * 类说明：页码显示效果类 。1：TextModel “第一页 上一页 下一页 最后一页”；2：NumModel “第一页 2 3 4 最后一页”；
  *
@@ -62,6 +64,23 @@ public class PageNavigate {
         this.url = url;
         this.pageIndex = pageIndex;
         this.pageSize = pageSize;
+        this.recordCount = recordCount;
+        countPage = calPageCount(recordCount, pageSize);
+        if (pageIndex > countPage && countPage > 0)
+            this.pageIndex = countPage;
+    }
+
+    /**
+     * 只传入url、当前页、总记录数
+     * @param url
+     * @param pageIndex
+     * @param recordCount
+     */
+    public PageNavigate(String url, int pageIndex, int recordCount) {
+        super();
+        this.url = url;
+        this.pageIndex = pageIndex;
+        this.pageSize = GlobalConst.pageSize;
         this.recordCount = recordCount;
         countPage = calPageCount(recordCount, pageSize);
         if (pageIndex > countPage && countPage > 0)

@@ -10,14 +10,14 @@ import com.critc.plat.util.page.PageSearchVO;
  */
 public class SysLogSearchVO extends PageSearchVO {
     private Integer userId;//用户id
-    private String startDte;//起始日期
+    private String startDate;//起始日期
     private String endDate;//终止日期
 
     @Override
     public String toString() {
         return "SysLogSearchVO{" +
                 "userId=" + userId +
-                ", startDte='" + startDte + '\'' +
+                ", startDate='" + startDate + '\'' +
                 ", endDate='" + endDate + '\'' +
                 '}';
     }
@@ -30,12 +30,12 @@ public class SysLogSearchVO extends PageSearchVO {
         this.userId = userId;
     }
 
-    public String getStartDte() {
-        return startDte;
+    public String getStartDate() {
+        return startDate;
     }
 
-    public void setStartDte(String startDte) {
-        this.startDte = startDte;
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
     }
 
     public String getEndDate() {

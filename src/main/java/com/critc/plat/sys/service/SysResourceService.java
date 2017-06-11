@@ -48,6 +48,16 @@ public class SysResourceService {
     }
 
     /**
+     * 根据类型来获取所有资源
+     *
+     * @param type
+     * @return
+     */
+    public List<SysResource> listByType(int type) {
+        return sysResourceDao.listByType(type);
+    }
+
+    /**
      * 模块列表，递归生成，用于显示treeGrid
      *
      * @return
@@ -72,37 +82,6 @@ public class SysResourceService {
     }
 
 
-    /**
-     * 取得模块 treegrid json
-     *
-     * @return
-     */
-    public String getTreeGridJson() {
-        List<SysResource> list = list();
-        String json = "";
-        json = createTreeGridJson(list, 1);
-        return "[" + json + "]";
-    }
-
-    private String createTreeGridJson(List<SysResource> list, int parentId) {
-        String str = "";
-        for (SysResource sysModule : list) {
-            if (sysModule.getParentId() == parentId) {
-                str += "{\"id\":" + sysModule.getId() + ",\"parent_id\":" + sysModule.getParentId() + ",\"name\":\"" + sysModule.getName() + "\"" + ",\"code\":\"" + sysModule.getCode() + "\""
-                        + ",\"url\":\"" + sysModule.getUrl() + "\"" + ",\"target\":\"" + sysModule.getTarget() + "\"" + ",\"iconImg\":\"" + sysModule.getIconImg() + "\"" + ",\"displayOrder\":"
-                        + sysModule.getDisplayOrder();
-                if (sysModule.getCnt() > 0)
-                    str += ",\"leaf\":false,\"expanded\":true,\"children\":[" + createTreeGridJson(list, sysModule.getId()) + "]";
-                else
-                    str += ",\"leaf\":true";
-                str += "},";
-            }
-        }
-        str = StringUtil.subTract(str);
-        return str;
-    }
-
-
     public int getChildCount(int id) {
         return sysResourceDao.getChildCount(id);
     }
@@ -113,7 +92,7 @@ public class SysResourceService {
      * @return
      */
     public String createZtreeByModule() {
-        List<SysResource> listModule = sysResourceDao.list();// 模块列表
+        List<SysResource> listModule = sysResourceDao.listByType(1);// 模块列表
         StringBuilder sb = new StringBuilder();
         for (SysResource sysModule : listModule) {
             if (sysModule.getParentId() != 0) {

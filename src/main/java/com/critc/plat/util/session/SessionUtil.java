@@ -30,4 +30,18 @@ public class SessionUtil {
             return null;
         }
     }
+
+    /**
+     * 获取当前操作人
+     *
+     * @param request
+     * @return
+     */
+    public static String getRealname(HttpServletRequest request) {
+        if (request.getSession().getAttribute("userSession") != null)
+            return getUserSession(request).getRealname();
+        else {
+            return "";
+        }
+    }
 }
