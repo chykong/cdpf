@@ -11,7 +11,7 @@
     <ul class="breadcrumb">
         <li><i class="ace-icon fa fa-home home-icon"></i> <a href="#">首页</a></li>
         <li class="active">系统管理</li>
-        <li class="active">模块管理</li>
+        <li class="active">资源管理</li>
     </ul>
 </div>
 
@@ -62,25 +62,26 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${list }" var="sysModule" varStatus="st">
-                    <tr id="${sysModule.id}" pId="${sysModule.parentId ne 1?sysModule.parentId:'0'}">
-                        <td>${sysModule.name}</td>
-                        <td>${sysModule.code}</td>
-                        <td style="word-break: break-all;">${sysModule.url}</td>
-                        <td>${sysModule.target}</td>
+                <c:forEach items="${list }" var="resource" varStatus="st">
+                    <tr id="${resource.id}" pId="${resource.parentId ne 1?resource.parentId:'0'}">
+                        <td>${resource.name}</td>
+                        <td>${resource.code}</td>
+                        <td style="word-break: break-all;">${resource.url}</td>
+                        <td>${resource.target}</td>
                         <td>
                             <div>
-                                <i class="fa ${sysModule.iconImg}"></i>
+                                <i class="fa ${resource.iconImg}"></i>
                             </div>
                         </td>
-                        <td style="text-align: center;">${sysModule.displayOrder}</td>
-                        <td><c:if test="${critc:isP('SysReourceAdd')}">
-                            <a href="toUpdate.htm?id=${sysModule.id}&backUrl=${backUrl}"> 修改</i>
+                        <td style="text-align: center;">${resource.displayOrder}</td>
+                        <td>
+                            <c:if test="${critc:isP('SysReourceAdd')}">
+                            <a href="toUpdate.htm?id=${resource.id}&backUrl=${backUrl}"> 修改</i>
                             </a>
                         </c:if> <c:if test="${critc:isP('SysReourceDelete')}">
-                            <a href="javascript:delModule(${sysModule.id });"> 删除 </a>
+                            <a href="javascript:delModule(${resource.id });"> 删除 </a>
                         </c:if>
-                            <a href="${dynamicServer }/sys/function/index.htm?id=${sysModule.id }">功能设置 </a>
+                            <a href="${dynamicServer }/sys/resource/functionIndex.htm?parentId=${resource.id }">功能设置 </a>
                         </td>
                     </tr>
                 </c:forEach>

@@ -19,8 +19,19 @@ public class SysResourceService {
     @Autowired
     private SysResourceDao sysResourceDao;
 
+    /**
+     *
+     * 新增前判断代码是否唯一
+     * @param sysResource
+     * @return
+     */
     public int add(SysResource sysResource) {
-        return sysResourceDao.add(sysResource);
+        //判断代码是否一致
+        SysResource exist = sysResourceDao.getByModuleCode(sysResource.getCode());
+        if (exist != null)
+            return 2;
+        else
+            return sysResourceDao.add(sysResource);
     }
 
     public int update(SysResource sysResource) {
@@ -109,7 +120,7 @@ public class SysResourceService {
      * @param userId
      * @return
      */
-    public List<SysResource> listByUser_id(int userId) {
-        return sysResourceDao.listByUserId(userId);
+    public List<SysResource> listByParentId(int userId) {
+        return sysResourceDao.listByParentId(userId);
     }
 }

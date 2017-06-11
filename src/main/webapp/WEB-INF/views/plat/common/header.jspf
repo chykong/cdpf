@@ -25,8 +25,8 @@
 					<ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
 						<li><a href="${dynamicServer }/toUpdatePass.htm"> <i class="ace-icon fa fa-cog"></i> 修改密码
 						</a></li>
-						<li><a href="${dynamicServer }/base/shop/profile.htm"> <i class="ace-icon fa fa-user"></i> 修改个人信息
-						</a></li>
+						<%--<li><a href="${dynamicServer }/base/shop/profile.htm"> <i class="ace-icon fa fa-user"></i> 修改个人信息
+						</a></li>--%>
 						<li class="divider"></li>
 						<li><a href="${dynamicServer }/logout.htm"> <i class="ace-icon fa fa-power-off"></i> 退出
 						</a></li>

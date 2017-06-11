@@ -101,15 +101,14 @@ public class SysResourceDao extends BaseDao<SysResource, SysResource> {
     }
 
     /**
-     * 根据user_id获取模块
+     * 根据parentId获取模块列表
      *
-     * @param userId
+     * @param parentId
      * @return
      */
-    public List<SysResource> listByUserId(int userId) {
-        String sql = "select m.*,(select count(*) from t_sys_resource where parent_id=m.id) cnt from t_sys_resource m where id"
-                + " in (select  module_id from t_sys_rolemodule where role_id in (select role_id from t_sys_user where id =?))" + " order by parent_id, display_order";
-        return list(sql, userId);
+    public List<SysResource> listByParentId(int parentId ){
+        String sql = "select m.*,(select count(*) from t_sys_resource where parent_id=m.id) cnt from t_sys_resource m where parent_id=? order by display_order";
+        return list(sql, parentId);
     }
 
     /**

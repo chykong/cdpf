@@ -57,6 +57,14 @@ public class SysResourceController extends BaseController {
         ModelAndView mv = new ModelAndView();
         String ztree = sysResourceService.createZtreeByModule();//模块列表
         mv.addObject("ztree", ztree);
+        if (sysResource.getParentId() != null && sysResource.getParentId() != 0) {
+            SysResource parent = sysResourceService.get(sysResource.getParentId());
+            sysResource.setParentName(parent.getName());
+            sysResource.setType(2);//设置为增加功能界面
+        } else {
+            sysResource.setType(1);
+        }
+        mv.addObject("sysResource", sysResource);
         mv.setViewName("/plat/sys/resource/add");
         BackUrlUtil.setBackUrl(mv, request);// 设置返回的url
         return mv;
@@ -88,9 +96,11 @@ public class SysResourceController extends BaseController {
             sysResource.setParentId(1);
         int flag = sysResourceService.add(sysResource);
         if (flag == 0)
-            return "forward:/error.htm?msg=" + StringUtil.encodeUrl("模块新增失败");
+            return "forward:/error.htm?msg=" + StringUtil.encodeUrl("资源新增失败");
+        else if (flag == 2)
+            return "forward:/error.htm?msg=" + StringUtil.encodeUrl("资源代码已存在");
         else
-            return "forward:/success.htm?msg=" + StringUtil.encodeUrl("模块新增成功");
+            return "forward:/success.htm?msg=" + StringUtil.encodeUrl("资源新增成功");
     }
 
     /**
@@ -128,5 +138,24 @@ public class SysResourceController extends BaseController {
         else
             return "forward:/success.htm?msg=" + StringUtil.encodeUrl("删除成功");
     }
+
+
+    /**
+     * 进入功能维护列表
+     *
+     * @return
+     */
+    @RequestMapping("/functionIndex")
+    public ModelAndView functionIndex(HttpServletRequest request, int parentId) {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("/plat/sys/resource/functionIndex");
+        List<SysResource> list = sysResourceService.listByParentId(parentId);
+        mv.addObject("list", list);// 把获取的记录放到mv里面
+        mv.addObject("resource", sysResourceService.get(parentId));//取得父节点放入mv
+        String url = pubConfig.getDynamicServer() + "/sys/resource/functionIndex.htm?parentId=" + parentId;
+        mv.addObject("backUrl", StringUtil.encodeUrl(url));
+        return mv;
+    }
+
 
 }

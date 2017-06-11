@@ -14,7 +14,7 @@
     <ul class="breadcrumb">
         <li><i class="ace-icon fa fa-home home-icon"></i> <a href="#">首页</a></li>
         <li class="active">系统管理</li>
-        <li class="active">模块管理</li>
+        <li class="active">资源管理</li>
     </ul>
 </div>
 
@@ -22,8 +22,8 @@
 <div class="page-content">
     <div class="page-header">
         <h1>
-            模块管理
-            <small><i class="ace-icon fa fa-angle-double-right"></i> 修改模块
+            资源管理
+            <small><i class="ace-icon fa fa-angle-double-right"></i> 修改资源
             </small>
         </h1>
     </div>
@@ -81,8 +81,7 @@
                             id="urlTip"></label>
                     </div>
                 </div>
-                <div class="form-group">
-
+                <div class="form-group" id="divTarget">
                     <label class="col-sm-3 control-label">资源目标：</label>
                     <div class="col-sm-9 ">
                         <select name="target" class="col-xs-10 col-sm-5">
@@ -93,7 +92,7 @@
                         </select> <label id="targetTip"></label>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group" id="divIconImg">
                     <label class="col-sm-3 control-label">图标：</label>
                     <div class="col-sm-9">
                         <input id="iconImg" type="text" name="iconImg" class="col-xs-10 col-sm-5"
@@ -194,6 +193,16 @@
 				    }
 				    
 					$(document).ready(function() {
+					     //如果为新增功能，则不显示图标和target
+					    var type='${sysResource.type}';
+					    if(type==2)
+					    {
+					        $("#divIconImg").hide();
+					        $("#divTarget").hide();
+					    }
+
+
+
 						$("#resouceForm").validate({
 							debug : true,
 							errorElement : "label",
