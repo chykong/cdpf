@@ -55,7 +55,7 @@ public class SysUserController extends BaseController {
         mv.addObject("pageNavigate", pageNavigate);// 设置分页的变量
         mv.addObject("list", list);// 把获取的记录放到mv里面
         mv.addObject("listRole", sysRoleService.list());// 角色列表
-        mv.setViewName("/sys/user");// 跳转至指定页面
+        mv.setViewName("/sys/user/index");// 跳转至指定页面
         BackUrlUtil.createBackUrl(mv, request, url);// 设置返回url
         return mv;
     }
@@ -88,7 +88,7 @@ public class SysUserController extends BaseController {
         mv.addObject("listRole", sysRoleService.list());// 角色列表
         SysUser sysUser = new SysUser();
         mv.addObject("sysUser", sysUser);
-        mv.setViewName("/sys/userAdd");
+        mv.setViewName("/sys/user/add");
         BackUrlUtil.setBackUrl(mv, request);// 设置返回的url
         return mv;
     }
@@ -107,7 +107,7 @@ public class SysUserController extends BaseController {
         SysUser sysUser = sysUserService.get(id);
         mv.addObject("sysUser", sysUser);
         mv.addObject("listRole", sysRoleService.list());// 角色列表
-        mv.setViewName("/sys/userUpdate");
+        mv.setViewName("/sys/user/update");
         BackUrlUtil.setBackUrl(mv, request);// 设置返回的url
         return mv;
     }
@@ -129,7 +129,7 @@ public class SysUserController extends BaseController {
         if (flag == 0)
             return "forward:/error.htm?msg=" + StringUtil.encodeUrl("用户信息新增失败");
         else if (flag == 2)
-            return "forward:/error.htm?msg=" + StringUtil.encodeUrl("用户手机号已存在");
+            return "forward:/error.htm?msg=" + StringUtil.encodeUrl("用户账号已存在");
         else
             return "forward:/success.htm?msg=" + StringUtil.encodeUrl("用户信息新增成功");
     }
