@@ -73,6 +73,7 @@
     <!--设置拦截器，处理登录及权限控制-->
    <!-- <mvc:interceptors>
         <mvc:interceptor>
+            <mvc:mapping path="/index.htm"/>
             <mvc:mapping path="/sys/*/*"/>
             <bean class="com.critc.plat.core.interceptor.CheckLoginInterceptor"></bean>
         </mvc:interceptor>

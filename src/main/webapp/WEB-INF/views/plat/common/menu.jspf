@@ -36,16 +36,13 @@
 				class="btn btn-danger"></span>
 		</div>
 	</div>
-	<!-- /.sidebar-shortcuts -->
-
 
 	<ul class="nav nav-list">
 		<li class="active" id="menu-statistic"><a href="${dynamicServer}/index.htm" id="module_statistic"> <i
 				class="menu-icon fa fa-tachometer"></i> <span class="menu-text"> 功能菜单 </span>
-		</a> <b class="arrow"></b></li> <%--${critc:createMenu(pageContext.request) }--%>
+		</a> <b class="arrow"></b></li> ${critc:createMenu(pageContext.request) }
 	</ul>
 
-	<!-- #section:basics/sidebar.layout.minimize -->
 	<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
 		<i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left"
 			data-icon2="ace-icon fa fa-angle-double-right"></i>
@@ -56,7 +53,6 @@
 			//$("#footer").find("a").removeClass("active");
 			//当前选择的下标
 			var index = $(this).parent().attr("id");
-			//alert(index);
 			//记录下标
 			jQuery.jCookie('current', index, 30, {
 				path : '/'

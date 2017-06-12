@@ -30,32 +30,32 @@
                     type="hidden" id="moduleArr" name="moduleArr" value=""> <input type="hidden" name="functionArr"
                                                                                    id="functionArr" value="">
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">角色名称：</label>
-                    <div class="col-sm-9">
+                    <label class="col-sm-2 control-label">角色名称：</label>
+                    <div class="col-sm-10">
                         <input id="name" name="name" type="text" class="col-xs-10 col-sm-5" placeholder=""
                                value="${sysRole.name}"> <label
                             id="nameTip"></label>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">角色说明：</label>
-                    <div class="col-sm-9">
+                    <label class="col-sm-2 control-label">角色说明：</label>
+                    <div class="col-sm-10">
                         <input id="description" type="text" name="description" class="col-xs-10 col-sm-5" placeholder=""
                                value="${sysRole.description }"><label
                             id="descriptionTip"></label>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">排序：</label>
-                    <div class="col-sm-9">
+                    <label class="col-sm-2 control-label">排序：</label>
+                    <div class="col-sm-10">
                         <input id="displayOrder" type="text" name="displayOrder" class="col-xs-10 col-sm-5" placeholder=""
                                value="${sysRole.displayOrder}"><label
                             id="displayOrderTip"></label>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">角色权限：</label>
-                    <div class="col-sm-9">
+                    <label class="col-sm-2 control-label">角色权限：</label>
+                    <div class="col-sm-10">
                         <c:forEach items="${listModule }" var="sysModule" varStatus="st">
                             <c:if test="${sysModule.parentId eq 1 }">
                                 <div class="widget-box">

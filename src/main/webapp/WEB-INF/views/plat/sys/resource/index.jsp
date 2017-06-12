@@ -38,6 +38,9 @@
                                             <i class="ace-icon fa fa-plus bigger-110"></i>新增
                                         </button>
                                     </c:if>
+                                    <button class="btn btn-success btn-sm" id="btnClear">
+                                        <i class="ace-icon fa fa-refresh"></i> 清空缓存
+                                    </button>
                                 </td>
                             </tr>
                         </table>
@@ -100,6 +103,7 @@
 				$(function() {
 					$("#btnSearch").bind('click', searchModule);
 					$("#btnAdd").bind('click', addUser);
+					$("#btnClear").bind('click', clearCache);
 
 					$("#treeTable").treeTable({
 						expandLevel : 3
@@ -123,9 +127,10 @@
 				var addUser = function(id) {
 					window.location = 'toAdd.htm?backUrl=${backUrl }';
 				}
-
-
-
+				//清空缓存
+				var clearCache = function() {
+					window.location = 'clearCache.htm?backUrl=${backUrl }';
+				}
 
 </script>
 </body>

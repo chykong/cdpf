@@ -7,8 +7,8 @@
     <mapping path="/*" decorator="/WEB-INF/views/plat/decorators/decorator.jsp" />
 
     <!-- 指明满足“/login”的页面，将被排除，不被装饰 -->
-    <mapping path="/login" exclue="true" />
-    <mapping path="/plat/sys/user/login*" exclue="true" /><!--查看用户登录列表-->
+    <mapping path="/login.htm" exclue="true" />
+    <mapping path="/sys/user/searchUserLogin.htm" exclue="true" /><!--查看用户登录列表-->
 
     <!-- 自定义标签 -->
     <!--<content-processor>

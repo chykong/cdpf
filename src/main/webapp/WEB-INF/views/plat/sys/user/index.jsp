@@ -191,7 +191,7 @@
                 title: "【" + title + "】登录历史",
                 title_html: false,
                 width: 1000,
-                minHeight: 400,
+                minHeight: 500,
                 position: {my: "center", at: "center", of: window},
                 modal: true,
                 buttons: [

@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
-<%@ include file="../../common/taglib.jsp" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ include file="common/taglib.jsp" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <title>${webTitle}</title>
-    <%@ include file="../../common/header.jsp" %>
-    <script src="${staticServer }/assets/js/userBrower.js"></script>
-    <script src="${staticServer }/assets/js/jCookie.js"></script>
+    <%@ include file="common/styles.jspf" %>
+    <script src="${staticServer }/assets/ace1.4/js/userBrower.js"></script>
+    <script src="${staticServer }/assets/ace1.4/js/jCookie.js"></script>
 </head>
 
 <body class="login-layout">
@@ -77,92 +77,81 @@
 </div>
 
 
-<%@ include file="../../common/js.jsp" %>
+<%@ include file="common/scripts.jspf" %>
 
 <!-- inline scripts related to this page -->
 <script type="text/javascript">
-		jQuery(function($) {
+    jQuery(function ($) {
 
-			$("#loginForm").validate({
-				errorElement : "label",
-				errorClass : "valiError",
-				errorPlacement : function(error, element) {
-				},
-				rules : {
-					username : {
-						required : true
-					},
-					password : {
-						required : true
-					}
-				},
-				messages : {
-					username : {
-						required : ""
-					},
-					password : {
-						required : ""
-					}
-				},
-				submitHandler : function(form) {
-					checkLogin();
-				}
-			});
+        $("#loginForm").validate({
+            errorElement: "label",
+            errorClass: "valiError",
+            errorPlacement: function (error, element) {
+            },
+            rules: {
+                username: {
+                    required: true
+                },
+                password: {
+                    required: true
+                }
+            },
+            messages: {
+                username: {
+                    required: ""
+                },
+                password: {
+                    required: ""
+                }
+            },
+            submitHandler: function (form) {
+                checkLogin();
+            }
+        });
 
-			var cookie_chk = jQuery.jCookie('bls_chk');
-			if (cookie_chk != '' && cookie_chk != null && cookie_chk == '1') {
-				$('#chk').prop("checked", true);
-				$('#username').val(jQuery.jCookie('bls_username'));
-			}
-		});
+        var cookie_chk = jQuery.jCookie('bls_chk');
+        if (cookie_chk != '' && cookie_chk != null && cookie_chk == '1') {
+            $('#chk').prop("checked", true);
+            $('#username').val(jQuery.jCookie('bls_username'));
+        }
+    });
 
-		function checkLogin() {
-			if ($('#chk').is(':checked')) {
-				jQuery.jCookie('bls_chk', '1', 30);
-				jQuery.jCookie('bls_username', $('#username').val(), 30);
-			} else {
-				jQuery.jCookie('bls_chk', '0', 30);
-			}
+    function checkLogin() {
+        if ($('#chk').is(':checked')) {
+            jQuery.jCookie('bls_chk', '1', 30);
+            jQuery.jCookie('bls_username', $('#username').val(), 30);
+        } else {
+            jQuery.jCookie('bls_chk', '0', 30);
+        }
 
-			var username = $("#username").val();
-			var password = $("#password").val();
-			$.ajax({
-				type : "post",
-				url : "${dynamicServer}/checkLogin.htm",
-				data : {
-					username : username,
-					password : password,
-					terminal : getUserTerminalType(),
-					explorerType : getExplorerInfo().browser,
-					explorerVersion : getExplorerInfo().version
-				},
-				dataType : "json",
-				success : function(data) {
-					if (data.success) {
-						$("#lblMessage").hide();
-						window.location.href = "${dynamicServer}/index.htm";
-					} else {
-						$("#lblMessage").html(data.msgText);
-						$("#lblMessage").show();
-					}
-				},
-				error : function(data) {
-					$("#lblMessage").html('登录失败');
-					$("#lblMessage").show();
-				}
-			});
-		}
-
-
-
-
-
-
-
-
-
-
-
+        var username = $("#username").val();
+        var password = $("#password").val();
+        $.ajax({
+            type: "post",
+            url: "${dynamicServer}/checkLogin.htm",
+            data: {
+                username: username,
+                password: password,
+                terminal: getUserTerminalType(),
+                explorerType: getExplorerInfo().browser,
+                explorerVersion: getExplorerInfo().version
+            },
+            dataType: "json",
+            success: function (data) {
+                if (data.success) {
+                    $("#lblMessage").hide();
+                    window.location.href = "${dynamicServer}/index.htm";
+                } else {
+                    $("#lblMessage").html(data.msgText);
+                    $("#lblMessage").show();
+                }
+            },
+            error: function (data) {
+                $("#lblMessage").html('登录失败');
+                $("#lblMessage").show();
+            }
+        });
+    }
 
 </script>
 </body>

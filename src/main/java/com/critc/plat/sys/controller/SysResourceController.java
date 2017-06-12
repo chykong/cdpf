@@ -4,6 +4,7 @@ import com.critc.plat.core.controller.BaseController;
 import com.critc.plat.core.pub.PubConfig;
 import com.critc.plat.sys.model.SysResource;
 import com.critc.plat.sys.service.SysResourceService;
+import com.critc.plat.util.cache.EhCacheUtil;
 import com.critc.plat.util.string.BackUrlUtil;
 import com.critc.plat.util.string.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -157,5 +158,17 @@ public class SysResourceController extends BaseController {
         return mv;
     }
 
+    /**
+     * 清空缓存
+     *
+     * @param request
+     * @param response
+     * @return
+     */
+    @RequestMapping("/clearCache")
+    public String clearCache(HttpServletRequest request, HttpServletResponse response) {
+        EhCacheUtil.removeAll("sysCache");
+        return "forward:/success.htm?msg=" + StringUtil.encodeUrl("缓存清空成功");
+    }
 
 }

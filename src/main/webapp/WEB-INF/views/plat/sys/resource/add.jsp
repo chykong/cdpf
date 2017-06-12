@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="../../common/taglib.jsp" %>
 
 <head>
@@ -88,9 +88,15 @@
                     <label class="col-sm-3 control-label">图标：</label>
                     <div class="col-sm-9">
                         <input id="iconImg" type="text" name="iconImg" class="col-xs-10 col-sm-5" placeholder=""
-                               value="">
+                               value=""> <span class="input-group-btn">
+											<button type="button" class="btn btn-primary btn-sm"
+                                                    onclick="javascript:showIcon()">
+												<span class="ace-icon fa fa-search icon-on-right bigger-110"></span> 选择
+											</button>
+										</span>
                     </div>
                 </div>
+
                 <div class="form-group">
                     <label class="col-sm-3 control-label">描述：</label>
                     <div class="col-sm-9">
@@ -140,90 +146,90 @@
         </div>
     </div>
 </div>
+<%@ include file="icon.jsp" %>
+
 <script src="${staticServer }/assets/zTree3.5/js/jquery.ztree.all-3.5.min.js" type="text/javascript"></script>
-
 <script type="text/javascript">
-				
-				 var zTree;
-				    var setting = {
-				        data: {
-				            simpleData: {
-				                enable: true,
-				                idKey: "id",
-				                pIdKey: "pId",
-				                rootPId: ""
-				            }
-				        }
-				    };
-				    var zNodes = [${ztree}];
-				    jQuery(document).ready(function () {
-				        var t = $("#tree");
-				        t = $.fn.zTree.init(t, setting, zNodes);
-				        var zTree = $.fn.zTree.getZTreeObj("tree");
-				    });
 
-				    function getSelected() {
-				        var treeObj = $.fn.zTree.getZTreeObj("tree");
-				        var nodes = treeObj.getSelectedNodes();
-				        if (nodes.length > 0) {
-				            $("#parentId").val(nodes[0].id);
-				            $("#parentName").val(nodes[0].name);
-				            $('#basic').modal('hide');
-				        }
-				        else return;
+    var zTree;
+    var setting = {
+        data: {
+            simpleData: {
+                enable: true,
+                idKey: "id",
+                pIdKey: "pId",
+                rootPId: ""
+            }
+        }
+    };
+    var zNodes = [${ztree}];
+    jQuery(document).ready(function () {
+        var t = $("#tree");
+        t = $.fn.zTree.init(t, setting, zNodes);
+        var zTree = $.fn.zTree.getZTreeObj("tree");
+    });
 
-				    }
-				
-				    function showSelTree() {
-				        $('#basic').modal('show');
-				    }
-				    
-					$(document).ready(function() {
+    function getSelected() {
+        var treeObj = $.fn.zTree.getZTreeObj("tree");
+        var nodes = treeObj.getSelectedNodes();
+        if (nodes.length > 0) {
+            $("#parentId").val(nodes[0].id);
+            $("#parentName").val(nodes[0].name);
+            $('#basic').modal('hide');
+        }
+        else return;
 
-					    //如果为新增功能，则不显示图标和target
-					    var type='${sysResource.type}';
-					    if(type==2)
-					    {
-					        $("#divIconImg").hide();
-					        $("#divTarget").hide();
-					    }
+    }
 
-						$("#resouceForm").validate({
-							debug : true,
-							errorElement : "label",
-							errorClass : "valiError",
-							errorPlacement : function(error, element) {
-								error.appendTo($("#" + element.attr('id') + "Tip"));
-							},
-							rules : {
-								 name: {
-					                    required: true,
-					                    maxlength: 40
-					                },
-					                code: {
-					                    required: true,
-					                    maxlength: 20
-					                },
-					                url: {
-					                    required: true,
-					                    maxlength: 100
-					                },
-					                displayOrder: {
-					                    required: true,
-					                    number: true,
-					                    maxlength: 10
-					                },
-					                description: {
-					                    maxlength: 50
-					                }
-							},
-							messages : {
-							},
-							submitHandler : function(form) {
-								form.submit();
-							}
-						});
-					});
+    function showSelTree() {
+        $('#basic').modal('show');
+    }
+    function showIcon() {
+        $('#iconModel').modal('show');
+    }
+    $(document).ready(function () {
+        //如果为新增功能，则不显示图标和target
+        var type = '${sysResource.type}';
+        if (type == 2) {
+            $("#divIconImg").hide();
+            $("#divTarget").hide();
+        }
+
+        $("#resouceForm").validate({
+            debug: true,
+            errorElement: "label",
+            errorClass: "valiError",
+            errorPlacement: function (error, element) {
+                error.appendTo($("#" + element.attr('id') + "Tip"));
+            },
+            rules: {
+                name: {
+                    required: true,
+                    maxlength: 40
+                },
+                code: {
+                    required: true,
+                    maxlength: 20
+                },
+                url: {
+                    required: true,
+                    maxlength: 100
+                },
+                displayOrder: {
+                    required: true,
+                    number: true,
+                    maxlength: 10
+                },
+                description: {
+                    maxlength: 50
+                }
+            },
+            messages: {},
+            submitHandler: function (form) {
+                form.submit();
+            }
+        });
+    });
 
 </script>
 </body>
