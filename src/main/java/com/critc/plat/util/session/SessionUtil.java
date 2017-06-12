@@ -22,13 +22,13 @@ public class SessionUtil {
         if (request.getSession().getAttribute("userSession") != null)
             return (UserSession) request.getSession().getAttribute("userSession");
         else {
-            UserSession userSession = new UserSession();
-            userSession.setRoleId(1);
-            userSession.setUserId(1);
-            userSession.setUsername("admin");
-            userSession.setRealname("admin");
-            return userSession;
-//            return null;
+//            UserSession userSession = new UserSession();
+//            userSession.setRoleId(1);
+//            userSession.setUserId(1);
+//            userSession.setUsername("admin");
+//            userSession.setRealname("admin");
+//            return userSession;
+            return null;
         }
     }
 

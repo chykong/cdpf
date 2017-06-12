@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -191,5 +192,22 @@ public class StringUtil {
         Matcher m = p.matcher(mobile);
         boolean b = m.matches();
         return b;
+    }
+
+    /**
+     * 获取Request的参数，并将其"Key=Value&Key=Value"的格式返回
+     * @param request 请求
+     * @return "Key=Value&Key=Value"格式的字符串
+     */
+    public static String getOperaParams(HttpServletRequest request) {
+        String parameters = "";// 定义所有参数值
+        Map<String, String[]> map = request.getParameterMap();
+        // /取得所有参数值，用&号组装起来
+        Object[] obj = null;
+        obj = map.keySet().toArray();
+        for (int i = 0; i < obj.length; i++) {
+            parameters += obj[i].toString() + "=" + request.getParameter(obj[i].toString()) + "&";
+        }
+        return parameters;
     }
 }

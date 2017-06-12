@@ -1,5 +1,6 @@
 package com.critc.plat.core.interceptor;
 
+import com.critc.plat.util.json.JsonUtil;
 import com.critc.plat.util.session.SessionUtil;
 import com.critc.plat.util.session.UserSession;
 import com.critc.plat.util.string.StringUtil;
@@ -12,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * 功能描述:校验是否登录拦截器
- *  未登录直接跳转至登录页面
+ * 未登录直接跳转至登录页面
  *
  * @author 孔垂云
  * @version 1.0.0
@@ -28,12 +29,7 @@ public class CheckLoginInterceptor implements HandlerInterceptor {
         if (userSession == null) {
             boolean isAjaxRequest = StringUtil.checkAjaxRequest(request);
             if (isAjaxRequest) {
-                /*Message msg = new Message();
-				msg.setSuccess(false);
-				msg.setExName("错误提示");
-				msg.setMsgText("连接超时，请重新登录");
-				msg.setIsSessionOut(true);
-				WebUtil.out(response, JsonUtil.toStr(msg));*/
+                WebUtil.out(response, JsonUtil.createOperaStr(false, "连接超时，请重新登录!"));
             } else {
                 String str = "<script>top.location.href='" + request.getContextPath() + "/'</script>";
                 WebUtil.out(response, str);

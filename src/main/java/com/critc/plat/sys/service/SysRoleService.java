@@ -169,7 +169,7 @@ public class SysRoleService {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         UserSession userSession = SessionUtil.getUserSession(request);
         HashMap<String, Integer> hashRoleFunction = getRoleFunctions(userSession.getRoleId());
-        return true;// hashRoleFunction.containsKey(buttonCode);
+        return hashRoleFunction.containsKey(buttonCode);
     }
 
     /**
@@ -218,7 +218,7 @@ public class SysRoleService {
                                 && displayResourceIdList.contains(sysResourceChild.getId())) {
                             sb.append("<li id=\"module_" + sysResourceChild.getId() + "\" class=\"\"><a href=\""
                                     + pubConfig.getDynamicServer() + "/" + sysResourceChild.getUrl()
-                                    + "\"> <i class=\"menu-icon fa fa-caret-right\"></i>" + sysResourceChild.getName()
+                                    + "\" target=\"" + sysResourceChild.getTarget() + "\"> <i class=\"menu-icon fa fa-caret-right\"></i>" + sysResourceChild.getName()
                                     + "</a> <b class=\"arrow\"></b></li>");
                         }
                     }

@@ -209,7 +209,7 @@
                 },
                 code: {
                     required: true,
-                    maxlength: 20
+                    maxlength: 40
                 },
                 url: {
                     required: true,

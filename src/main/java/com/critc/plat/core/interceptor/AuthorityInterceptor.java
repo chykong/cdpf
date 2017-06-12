@@ -1,9 +1,17 @@
 package com.critc.plat.core.interceptor;
 
+import com.critc.plat.core.pub.PubConfig;
+import com.critc.plat.sys.service.SysLogService;
+import com.critc.plat.sys.service.SysRoleService;
 import com.critc.plat.util.date.DateUtil;
+import com.critc.plat.util.json.JsonUtil;
+import com.critc.plat.util.session.SessionUtil;
 import com.critc.plat.util.session.UserSession;
+import com.critc.plat.util.string.StringUtil;
+import com.critc.plat.util.web.WebUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -19,45 +27,39 @@ import java.util.regex.Pattern;
  * @author 孔垂云
  */
 public class AuthorityInterceptor implements HandlerInterceptor {
-   /* @Autowired
+    @Autowired
     private SysRoleService sysRoleService;
     @Autowired
     private SysLogService sysLogService;
     @Autowired
-    private PubConfig pubConfig;*/
+    private PubConfig pubConfig;
 
     private static Logger logger = LoggerFactory.getLogger("operationLog");
 
     /**
-     * 操作前先判断是否登录，未登录跳转到登录界面
+     * 校验权限，如果无权限，跳转至上一页
      */
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-       /* UserSession userSession = SessionUtil.getUserSession(request);
+        UserSession userSession = SessionUtil.getUserSession(request);
         //校验权限
         String path = request.getServletPath();
         path = path.substring(1, path.length());
         String operaMethod = path.substring(path.lastIndexOf("/"));
         operaMethod = operaMethod.substring(1, operaMethod.length());
-        String parameters = RequestUtil.getOperaParams(request);
+        String parameters = StringUtil.getOperaParams(request);
         //记操作日志
         logOperation(path, parameters, userSession);
         //目前只校验add/update/delete/save/import开头的方法，其余不校验
         if (checkUrl(operaMethod)) {
-            boolean checked = sysRoleService.checkAuthority(userSession.getRole_id(), path);
+            boolean checked = sysRoleService.checkAuthority(userSession.getRoleId(), path);
             if (checked) {
                 //记录数据库日志
-                sysLogService.addLog(userSession.getUser_id(), path, parameters, userSession.getUser_ip());
+                sysLogService.addLog(userSession.getUserId(), path, parameters, userSession.getUserIp());
                 return true;
             } else {
                 boolean isAjaxRequest = StringUtil.checkAjaxRequest(request);
                 if (isAjaxRequest) {
-                    Message msg = new Message();
-                    msg.setSuccess(false);
-                    msg.setExName("错误提示");
-                    msg.setMessage("权限不足");
-                    msg.setMsgText("权限不足");
-                    msg.setIsException(true);
-                    WebUtil.out(response, JsonUtil.toStr(msg));
+                    WebUtil.out(response, JsonUtil.createOperaStr(false, "权限不足"));
                 } else {
                     String location = pubConfig.getDynamicServer() + "/error.htm?msg=" + StringUtil.encodeUrl("权限不足");
                     String str = "<script>location.href='" + location + "';</script>";
@@ -67,8 +69,7 @@ public class AuthorityInterceptor implements HandlerInterceptor {
             }
         } else {
             return true;
-        }*/
-        return true;
+        }
     }
 
     /**

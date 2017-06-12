@@ -82,11 +82,8 @@
                     <label class="col-sm-3 control-label">资源目标：</label>
                     <div class="col-sm-9 ">
                         <select name="target" class="col-xs-10 col-sm-5">
-                            <option value="_selft" <c:if test="${sysResource.target eq '_self'} "> selected</c:if>>_self
-                            </option>
-                            <option value="_blank" <c:if test="${sysResource.target eq '_blank'} "> selected</c:if>>
-                                _blank
-                            </option>
+                            <option value="_self" <c:if test="${sysResource.target == '_self'}"> selected</c:if>>_self</option>
+                            <option value="_blank" <c:if test="${sysResource.target == '_blank'}"> selected</c:if>>_blank</option>
                         </select> <label id="targetTip"></label>
                     </div>
                 </div>
@@ -216,7 +213,7 @@
                 },
                 code: {
                     required: true,
-                    maxlength: 20
+                    maxlength: 40
                 },
                 url: {
                     required: true,
