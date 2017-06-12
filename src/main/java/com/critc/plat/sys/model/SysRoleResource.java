@@ -13,6 +13,7 @@ public class SysRoleResource {
     @Column(name = "resource_id")
     private int resourceId;//资源id
     private String resourceCode;//角色代码
+    private String url;//链接
 
     @Override
     public String toString() {
@@ -21,7 +22,16 @@ public class SysRoleResource {
                 ", roleId=" + roleId +
                 ", resourceId=" + resourceId +
                 ", resourceCode='" + resourceCode + '\'' +
+                ", url='" + url + '\'' +
                 '}';
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public String getResourceCode() {

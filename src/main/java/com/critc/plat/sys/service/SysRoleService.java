@@ -146,13 +146,13 @@ public class SysRoleService {
      * @param roleId
      * @return
      */
-    public HashMap<String, Integer> getRoleFunctions(int roleId) {
-        HashMap<String, Integer> hashFunctions = EhCacheUtil.get("sysCache", "roleFunctions" + roleId);
+    public HashMap<String, String> getRoleFunctions(int roleId) {
+        HashMap<String, String> hashFunctions = EhCacheUtil.get("sysCache", "roleFunctions" + roleId);
         if (hashFunctions == null) {
             hashFunctions = new HashMap<>();
             List<SysRoleResource> listRoleResource = sysRoleresourceDao.listRoleResource(roleId, 2);
             for (SysRoleResource sysRoleResource : listRoleResource) {
-                hashFunctions.put(sysRoleResource.getResourceCode(), sysRoleResource.getResourceId());
+                hashFunctions.put(sysRoleResource.getResourceCode(), sysRoleResource.getUrl());
             }
         }
         return hashFunctions;
@@ -168,7 +168,7 @@ public class SysRoleService {
     public boolean checkBtnPrivilege(String buttonCode) {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         UserSession userSession = SessionUtil.getUserSession(request);
-        HashMap<String, Integer> hashRoleFunction = getRoleFunctions(userSession.getRoleId());
+        HashMap<String, String> hashRoleFunction = getRoleFunctions(userSession.getRoleId());
         return hashRoleFunction.containsKey(buttonCode);
     }
 
@@ -183,7 +183,7 @@ public class SysRoleService {
         HashMap<String, String> hashRoleFunction = EhCacheUtil.get("sysCache", "hashRoleFunction_" + roleId);
         if (hashRoleFunction == null) {
             System.out.println("初始化角色对应功能" + roleId);
-//            hashRoleFunction = sysFunctionDao.hashRoleFunctionByRole_id(role_id);// 角色对应功能hash
+            hashRoleFunction = getRoleFunctions(roleId);// 角色对应功能hash
             EhCacheUtil.put("sysCache", "hashRoleFunction_" + roleId, hashRoleFunction);
         }
         if (hashRoleFunction.containsValue(path))
