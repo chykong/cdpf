@@ -14,3 +14,4 @@
 <script src="${staticServer}/assets/ace1.4/js/ace-extra.js"></script>
 <script src="${staticServer}/assets/ace1.4_components/jquery/dist/jquery.min.js"></script>
 <link rel="shortcut icon" href="${staticServer}/assets/ace1.4/images/favicon.ico" />
+<link rel="stylesheet" href="${staticServer }/assets/ace1.4_components/jquery-ui/jquery-ui.css"/>

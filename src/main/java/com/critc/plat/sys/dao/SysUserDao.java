@@ -17,13 +17,13 @@ import java.util.List;
 @Repository
 public class SysUserDao extends BaseDao<SysUser, SysUserSearchVO> {
     public int add(SysUser sysUser) {
-        String sql = "insert into t_sys_user(id,username,password,randomcode,status,realname,create_date,create_person,role_id)";
-        sql += " values(seq_t_sys_user.nextval,:username,:password,:randomcode,1,:realname,sysdate,:create_person,:role_id)";
+        String sql = "insert into t_sys_user(id,username,password,randomcode,status,realname,mobile,created_at,created_by,role_id)";
+        sql += " values(seq_t_sys_user.nextval,:username,:password,:randomcode,1,:realname,:mobile,sysdate,:createdBy,:roleId)";
         return insertForId(sql, sysUser, "id");
     }
 
     public int update(SysUser sysUser) {
-        String sql = "update t_sys_user set realname=:realname,role_id=:role_id where id=:id ";
+        String sql = "update t_sys_user set realname=:realname,role_id=:roleId,mobile=:mobile,last_modified_by=:lastModifiedBy,last_modified_at=sysdate where id=:id ";
         return update(sql, sysUser);
     }
 
@@ -81,7 +81,7 @@ public class SysUserDao extends BaseDao<SysUser, SysUserSearchVO> {
      * @return
      */
     public SysUser getByUsername(String username) {
-        String sql = "select t.*,(select name from t_sys_role where id=role_id) role_name from t_sys_user t where username=?";
+        String sql = "select t.*,(select name from t_sys_role where id=role_id) roleName from t_sys_user t where username=?";
         return get(sql, username);
     }
 
@@ -92,15 +92,15 @@ public class SysUserDao extends BaseDao<SysUser, SysUserSearchVO> {
      * @return
      */
     public List<SysUser> list(SysUserSearchVO sysUserSearchVO) {
-        String sql = "select t.*,(select name from t_sys_role where id=role_id) role_name  from t_sys_user t where 1=1 ";
+        String sql = "select t.*,(select name from t_sys_role where id=t.role_id) roleName  from t_sys_user t where 1=1 ";
         sql += createSearchSql(sysUserSearchVO);
         sql += " order by id asc";
-        sql+=PageUtil.createOraclePageSQL(sql,sysUserSearchVO.getPageIndex());
+        sql = PageUtil.createOraclePageSQL(sql, sysUserSearchVO.getPageIndex());
         return list(sql, sysUserSearchVO);
     }
 
     public List<SysUser> listAll() {
-        String sql = "select t.*,(select name from t_sys_role where id=role_id) role_name  from t_sys_user t ";
+        String sql = "select t.*,(select name from t_sys_role where id=role_id) roleName  from t_sys_user t ";
         sql += " order by id asc";
         return list(sql);
     }
@@ -114,7 +114,7 @@ public class SysUserDao extends BaseDao<SysUser, SysUserSearchVO> {
     public int listCount(SysUserSearchVO sysUserSearchVO) {
         String sql = "select count(*) from t_sys_user where 1=1 ";
         sql += createSearchSql(sysUserSearchVO);
-        return listCount(sql,sysUserSearchVO);
+        return listCount(sql, sysUserSearchVO);
     }
 
     private String createSearchSql(SysUserSearchVO sysUserSearchVO) {

@@ -55,7 +55,7 @@ public class SysUserController extends BaseController {
         mv.addObject("pageNavigate", pageNavigate);// 设置分页的变量
         mv.addObject("list", list);// 把获取的记录放到mv里面
         mv.addObject("listRole", sysRoleService.list());// 角色列表
-        mv.setViewName("/sys/user/index");// 跳转至指定页面
+        mv.setViewName("/plat/sys/user/index");// 跳转至指定页面
         BackUrlUtil.createBackUrl(mv, request, url);// 设置返回url
         return mv;
     }
@@ -88,7 +88,7 @@ public class SysUserController extends BaseController {
         mv.addObject("listRole", sysRoleService.list());// 角色列表
         SysUser sysUser = new SysUser();
         mv.addObject("sysUser", sysUser);
-        mv.setViewName("/sys/user/add");
+        mv.setViewName("/plat/sys/user/add");
         BackUrlUtil.setBackUrl(mv, request);// 设置返回的url
         return mv;
     }
@@ -107,7 +107,7 @@ public class SysUserController extends BaseController {
         SysUser sysUser = sysUserService.get(id);
         mv.addObject("sysUser", sysUser);
         mv.addObject("listRole", sysRoleService.list());// 角色列表
-        mv.setViewName("/sys/user/update");
+        mv.setViewName("/plat/sys/user/update");
         BackUrlUtil.setBackUrl(mv, request);// 设置返回的url
         return mv;
     }
@@ -232,7 +232,7 @@ public class SysUserController extends BaseController {
         List<SysUserLogin> list = sysUserLoginService.list(sysUserloginSearchVO);
         mv.addObject("pageNavigate", pageNavigate);// 设置分页的变量
         mv.addObject("list", list);// 把获取的记录放到mv里面
-        mv.setViewName("/sys/userLogin");// 跳转至指定页面
+        mv.setViewName("/plat/sys/user/login");// 跳转至指定页面
         return mv;
     }
 
