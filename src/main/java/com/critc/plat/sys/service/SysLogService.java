@@ -2,6 +2,7 @@ package com.critc.plat.sys.service;
 
 import com.critc.plat.sys.dao.SysLogDao;
 import com.critc.plat.sys.model.SysLog;
+import com.critc.plat.sys.model.SysResource;
 import com.critc.plat.sys.vo.SysLogSearchVO;
 import com.critc.plat.util.date.DateUtil;
 import com.critc.plat.util.excel.CSVUtil;
@@ -13,6 +14,8 @@ import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -32,24 +35,23 @@ public class SysLogService {
      */
     @Async
     public void addLog(int userId, String url, String parameters, String operaIp) {
-        /*HashMap<String, SysFunction> hashMap = sysFunctionService.getAllFunction();//获取所有function
+        HashMap<String, SysResource> hashMap =sysResourceService.getAllResource();//获取所有资源
 
         SysLog sysLog = new SysLog();
-        sysLog.setUser_id(user_id);
-        sysLog.setOpera_url(url);
+        sysLog.setUserId(userId);
+        sysLog.setOperaUrl(url);
         if (parameters.length() > 500)
             parameters = parameters.substring(0, 500);
-        sysLog.setOpera_params(parameters);
-        sysLog.setOpera_date(new Date());
-        sysLog.setOpera_ip(opera_ip);
+        sysLog.setOperaParams(parameters);
+        sysLog.setOperaDate(new Date());
+        sysLog.setOperaIp(operaIp);
 
-        SysFunction sysFunction = hashMap.get(url);
-        if (sysFunction != null) {
-            sysLog.setModule_name(sysFunction.getModule_name());
-            sysLog.setOpera_name(sysFunction.getName());
-            sysLog.setOpera_type(sysFunction.getType());
+        SysResource sysResource = hashMap.get(url);
+        if (sysResource != null) {
+            sysLog.setModuleName(sysResource.getParentName());
+            sysLog.setOperaName(sysResource.getName());
         }
-        sysLogDao.add(sysLog);*/
+        sysLogDao.add(sysLog);
     }
 
     /**

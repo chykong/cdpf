@@ -101,7 +101,7 @@ public class SysResourceDao extends BaseDao<SysResource, SysResource> {
     }
 
     /**
-     * 根据parentId获取模块列表
+     * 根据parentId获取下面的所有功能
      *
      * @param parentId
      * @return

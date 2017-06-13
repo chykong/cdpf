@@ -2,11 +2,13 @@ package com.critc.plat.sys.service;
 
 import com.critc.plat.sys.dao.SysResourceDao;
 import com.critc.plat.sys.model.SysResource;
+import com.critc.plat.util.cache.EhCacheUtil;
 import com.critc.plat.util.string.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -20,8 +22,8 @@ public class SysResourceService {
     private SysResourceDao sysResourceDao;
 
     /**
-     *
      * 新增前判断代码是否唯一
+     *
      * @param sysResource
      * @return
      */
@@ -98,6 +100,18 @@ public class SysResourceService {
     }
 
     /**
+     * 模块列表，递归生成，用于显示treeGrid
+     *
+     * @return
+     */
+    public List<SysResource> listByParentId() {
+        List<SysResource> list = sysResourceDao.listByType(1);//获取所有模块
+        List<SysResource> listRet = new ArrayList<>();
+        listRet = createModuleList(list, listRet, 1);
+        return listRet;
+    }
+
+    /**
      * 生成Ztree的树节点,新增模块时使用，只有模块上下级
      *
      * @return
@@ -115,12 +129,33 @@ public class SysResourceService {
     }
 
     /**
-     * 根据user_id获取所有功能菜单
+     * 从缓存中获取所有资源
      *
-     * @param userId
      * @return
      */
-    public List<SysResource> listByParentId(int userId) {
-        return sysResourceDao.listByParentId(userId);
+    public HashMap<String, SysResource> getAllResource() {
+        HashMap<String, SysResource> hashMap = EhCacheUtil.get("sysCache", "sysAllResource");
+        if (hashMap == null) {
+            hashMap = new HashMap<>();
+            List<SysResource> listResource = sysResourceDao.list();// 资源列表
+            for (SysResource sysResource : listResource) {
+                if (!sysResource.getUrl().equals("#")) {
+                    hashMap.put(sysResource.getUrl(), sysResource);
+                }
+            }
+            EhCacheUtil.put("sysCache", "sysAllResource", hashMap);
+        }
+        return hashMap;
     }
+
+    /**
+     * 根据parentId获取下面的所有功能
+     *
+     * @param parentId
+     * @return
+     */
+    public List<SysResource> listByParentId(int parentId) {
+        return sysResourceDao.listByParentId(parentId);
+    }
+
 }
