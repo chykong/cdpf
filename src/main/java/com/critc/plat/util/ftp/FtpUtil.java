@@ -28,8 +28,6 @@ public class FtpUtil {
      * @param userpass 密码
      * @param path     连接后跳转路径
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static FTPClient connectFtp(String ftp, int port, String username, String userpass, String path) {
         FTPClient ftpClient = new FTPClient();
@@ -52,8 +50,6 @@ public class FtpUtil {
      * 关闭连接
      *
      * @param ftpClient
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static void disconnect(FTPClient ftpClient) {
         if (ftpClient.isConnected()) {
@@ -71,8 +67,6 @@ public class FtpUtil {
      *
      * @param ftpClient
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static List<String> listFtpFile(FTPClient ftpClient) {
         List<String> listFiles = new ArrayList<String>();
@@ -98,8 +92,6 @@ public class FtpUtil {
      * @param ftpClient
      * @param filename
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static List<String> readFileContent(FTPClient ftpClient, String filename) {
         List<String> list = new ArrayList<String>();

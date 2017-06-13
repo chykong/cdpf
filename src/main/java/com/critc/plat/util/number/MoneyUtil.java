@@ -17,8 +17,6 @@ public class MoneyUtil {
      *
      * @param val
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static String formatMoney(BigDecimal val) {
         NumberFormat nf = new DecimalFormat("#,###.##");
@@ -32,8 +30,6 @@ public class MoneyUtil {
      *
      * @param amount 金额
      * @return String
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static BigDecimal moneyDToS(BigDecimal amount) {
         return BigDecimalUtil.mul(amount, new BigDecimal(100));
@@ -45,8 +41,6 @@ public class MoneyUtil {
      *
      * @param amount
      * @return BigDecimal
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static BigDecimal moneySToD(BigDecimal amount) {
         return BigDecimalUtil.div(amount, new BigDecimal(100));

@@ -17,8 +17,6 @@ public class NumberUtil {
      * @param val   字符串数字
      * @param point 小数位
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static String formatDouble(String val, int point) {
         String str = "";
@@ -34,8 +32,6 @@ public class NumberUtil {
      * @param val   数字
      * @param point 小数位
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static double formatDouble(double val, int point) {
         String str = "";
@@ -51,8 +47,6 @@ public class NumberUtil {
      *
      * @param str
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static int hexTrans(String str) {
         return Integer.parseInt(str.replaceAll("^0[x|X]", ""), 16);
@@ -63,8 +57,6 @@ public class NumberUtil {
      *
      * @param integer
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static boolean isInteger(String integer) {
         Pattern p = Pattern.compile("\\d*");
@@ -78,8 +70,6 @@ public class NumberUtil {
      *
      * @param integer
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static boolean isInteger2(String integer) {
         Pattern p = Pattern.compile("^[0-9]*[1-9][0-9]*$");
@@ -93,8 +83,6 @@ public class NumberUtil {
      *
      * @param decimal
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static boolean isDecimal(String decimal) {
         Pattern p = Pattern.compile("^([+-]?)\\\\d*\\\\.\\\\d+$");
@@ -107,8 +95,6 @@ public class NumberUtil {
      *
      * @param decimal
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static boolean isDecimal2(String decimal) {
         Pattern p = Pattern.compile("^-([1-9]\\\\d*.\\\\d*|0.\\\\d*[1-9]\\\\d*)$");

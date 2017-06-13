@@ -30,8 +30,6 @@ public class ExcelUtil {
      * @param fileName   文件流传入参数
      * @param titleIndex excel文件头的行数,默认从第一行开始，对应excel应该是titleIndex-1
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public String[] readExcelTitle(String fileName, int titleIndex) {
         Workbook wb = null;
@@ -75,8 +73,6 @@ public class ExcelUtil {
      * @param fileName  文件全路径名
      * @param dataIndex 为数据行的起始行数
      * @return List 包含单元格数据内容的Map对象
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public List<String[]> readExcelContent(String fileName, int dataIndex) {
         Workbook wb = null;
@@ -205,8 +201,6 @@ public class ExcelUtil {
      * @param data     二维数组
      * @param fileName 要生成文件名，可以为中文
      * @param response 页面传过来的response
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public void writeExcel(String[][] data, String fileName, HttpServletResponse response) {
         OutputStream os = null;
@@ -283,8 +277,6 @@ public class ExcelUtil {
      *
      * @param data     二维数组
      * @param fileName 写入的文件名
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public void writeExcel(String[][] data, String fileName) {
         FileOutputStream out = null;
@@ -422,11 +414,19 @@ public class ExcelUtil {
             work.write(os);
             os.flush();
         } catch (FileNotFoundException e) {
-            System.out.println("文件路径错误");
-            e.printStackTrace();
+            LogUtil.error(e);
+            LogUtil.error("文件路径错误");
         } catch (IOException e) {
-            System.out.println("文件输入流错误");
-            e.printStackTrace();
+            LogUtil.error(e);
+            LogUtil.error("文件输入流错误");
+        } finally {
+            if (os != null) {
+                try {
+                    os.close();
+                } catch (IOException e) {
+                    LogUtil.error(e);
+                }
+            }
         }
     }
 

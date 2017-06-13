@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * 页面标签，用于直接处理页面数据，展示使用
  *
- * @author chykong
+ * @author 孔垂云
+ * @date 2017-05-23
+
  */
 public class WebTag {
 

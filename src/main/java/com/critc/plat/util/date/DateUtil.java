@@ -17,15 +17,13 @@ import java.util.*;
 public class DateUtil {
     private static final String defaultDateFormatStr = "yyyy-MM-dd";//系统默认的格式化字符串
     private static final String defaultTimeFormatStr = "yyyy-MM-dd HH:mm:ss";//系统默认的格式化字符串
-    
+
     /**
      * 日期转字符串
      *
      * @param date
      * @param formatStr 格式化字符串
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static String dateToString(Date date, String formatStr) {
         DateFormat df = new SimpleDateFormat(formatStr);
@@ -38,8 +36,6 @@ public class DateUtil {
      * @param dateStr   需要转换的字符串
      * @param formatStr 需要格式的目标字符串 比如 yyyy-MM-dd
      * @return Date 返回转换后的时间
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static Date stringToDate(String dateStr, String formatStr) {
         DateFormat sdf = new SimpleDateFormat(formatStr);
@@ -70,8 +66,6 @@ public class DateUtil {
      * 取得系统日期，格式为yyyy-MM-dd
      *
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static String getSystemDate() {
         String strDate = "";
@@ -85,8 +79,6 @@ public class DateUtil {
      * 取得系统时间
      *
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static String getShortSystemTime() {
         String strTime = "";
@@ -100,8 +92,6 @@ public class DateUtil {
      * 取得系统短日期，yyyyMMdd
      *
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static String getShortSystemDate() {
         String strTime = "";
@@ -117,8 +107,6 @@ public class DateUtil {
      * @param dayNum    加减的日期数
      * @param formatStr 格式化字符串
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static String getOperaDate(String date, int dayNum, String formatStr) {
         Date dt = null;
@@ -140,8 +128,6 @@ public class DateUtil {
      * @param date   当前日期
      * @param dayNum 加减的日期数
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static String getOperaDate(String date, int dayNum) {
         return getOperaDate(date, dayNum, defaultDateFormatStr);
@@ -154,8 +140,6 @@ public class DateUtil {
      * @param monthNum  月份数
      * @param formatStr 格式化字符串
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static String getOperaMonth(String date, int monthNum, String formatStr) {
         Date dt = null;
@@ -177,8 +161,6 @@ public class DateUtil {
      * @param date
      * @param monthNum
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static String getOperaMonth(String date, int monthNum) {
         return getOperaMonth(date, monthNum, defaultDateFormatStr);
@@ -191,8 +173,6 @@ public class DateUtil {
      * @param date2     日期2
      * @param formatStr 格式化字符串
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static int getDateDifference(String date1, String date2, String formatStr) {
         SimpleDateFormat formatter = new SimpleDateFormat(formatStr);
@@ -210,8 +190,6 @@ public class DateUtil {
      * @param date1 日期1
      * @param date2 日期2
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static int getDateDifference(String date1, String date2) {
         return getDateDifference(date1, date2, defaultDateFormatStr);
@@ -223,8 +201,6 @@ public class DateUtil {
      * @param date1 日期1
      * @param date2 日期2
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static int getHourDifference(Date date1, Date date2) {
         int l = (int) (date1.getTime() - date2.getTime()) / (3600 * 1000);
@@ -238,8 +214,6 @@ public class DateUtil {
      * @param date2     日期2
      * @param formatStr 格式化字符换
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static int getMonthDifference(String date1, String date2, String formatStr) {
         int result = 0;
@@ -262,8 +236,6 @@ public class DateUtil {
      * @param date1 日期1
      * @param date2 日期2
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static int getMonthDifference(String date1, String date2) {
         int result = 0;
@@ -284,8 +256,6 @@ public class DateUtil {
      * 取得当月最后一天
      *
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static String getLastDayOfMonth() {
         Calendar cal = Calendar.getInstance();
@@ -301,8 +271,6 @@ public class DateUtil {
      * 取得当月第一天
      *
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static String getFirstDayOfMonth() {
         Calendar cal = Calendar.getInstance();
@@ -334,8 +302,6 @@ public class DateUtil {
      * 取得下个月的最后一天
      *
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static String getLastDayOfNextMonth() {
         Calendar cal = Calendar.getInstance();
@@ -354,8 +320,6 @@ public class DateUtil {
      *
      * @param date 当前日期
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static String getLastDayOfMonth(String date) {
         Date dt = null;
@@ -381,8 +345,6 @@ public class DateUtil {
      * @param starDate
      * @param endDate
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static List<String> getDayList(String starDate, String endDate) {
         SimpleDateFormat format = new SimpleDateFormat(defaultDateFormatStr);

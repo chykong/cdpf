@@ -20,8 +20,6 @@ public final class IPUtil {
      * 取到当前机器的IP地址，这里可以直接获取该服务器的所有网卡ip，如果包括内外网网卡，就是两个ip，中间以,分隔
      *
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static String getIp() {
         String hostIp = null;

@@ -19,8 +19,6 @@ public class WebUtil {
      *
      * @param response
      * @param str
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static void out(HttpServletResponse response, String str) {
         try {
@@ -36,8 +34,6 @@ public class WebUtil {
      *
      * @param response 响应
      * @param obj      需要转换为String的对象
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static void outJson(HttpServletResponse response, Object obj) {
         try {
@@ -53,8 +49,6 @@ public class WebUtil {
      *
      * @param obj
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static String getSafeStr(Object obj) {
         return obj == null ? "" : String.valueOf(obj);
@@ -66,8 +60,6 @@ public class WebUtil {
      * @param obj
      * @param strDefault 为空默认值
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static String getSafeStr(Object obj, String strDefault) {
         return obj == null ? strDefault : String.valueOf(obj);
@@ -78,8 +70,6 @@ public class WebUtil {
      *
      * @param obj
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static int getSafeInt(Object obj) {
         return obj == null || obj.toString().equals("") ? 0 : Integer.parseInt(String.valueOf(obj));
@@ -91,8 +81,6 @@ public class WebUtil {
      * @param obj
      * @param nDefualt 为空的默认值
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static int getSafeInt(Object obj, int nDefualt) {
         return obj == null || obj.toString().equals("") ? nDefualt : Integer.parseInt(String.valueOf(obj));
@@ -103,8 +91,6 @@ public class WebUtil {
      *
      * @param obj
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static double getSafeDouble(Object obj) {
         return obj == null ? 0 : Double.parseDouble(String.valueOf(obj));
@@ -116,8 +102,6 @@ public class WebUtil {
      * @param obj
      * @param nDefualt
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static double getSafeDouble(Object obj, double nDefualt) {
         return obj == null ? 0 : Double.parseDouble(String.valueOf(obj));
@@ -128,8 +112,6 @@ public class WebUtil {
      *
      * @param obj
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static float getSafeFloat(Object obj) {
         return obj == null ? 0 : Float.parseFloat(String.valueOf(obj));
@@ -140,8 +122,6 @@ public class WebUtil {
      *
      * @param obj
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static float getSafeFloat(Object obj, float nDefualt) {
         return obj == null ? 0 : Float.parseFloat(String.valueOf(obj));

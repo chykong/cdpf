@@ -12,7 +12,7 @@ import com.critc.plat.util.global.GlobalConst;
 public class PageSearchVO {
     private int total = 0;
     private int pageIndex = 1;
-    private int pageSize = GlobalConst.pageSize;
+    private int pageSize = GlobalConst.PAGESIZE;
 
     public int getTotal() {
         return total;

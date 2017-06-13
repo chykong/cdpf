@@ -19,8 +19,6 @@ public class CSVUtil {
      * @param fileName   要导出生成的文件名
      * @param data       二维数组
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static File createCSVFile(String outPutPath, String fileName, String[][] data) {
         File csvFile = null;

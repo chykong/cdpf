@@ -23,8 +23,6 @@ public class StringUtil {
      *
      * @param url url字符串
      * @return string
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static String decodeUrl(String url) {
         if (url == null)
@@ -43,8 +41,6 @@ public class StringUtil {
      *
      * @param url url字符串
      * @return string
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static String encodeUrl(String url) {
         if (url == null)
@@ -63,8 +59,6 @@ public class StringUtil {
      *
      * @param str 字符串
      * @return string
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static String subTract(String str) {
         if (str.length() == 0)
@@ -78,8 +72,6 @@ public class StringUtil {
      *
      * @param str 字符串
      * @return boolean
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static boolean isNullOrEmpty(String str) {
         if (str == null || str.equals(""))
@@ -94,8 +86,6 @@ public class StringUtil {
      *
      * @param str 字符串
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static boolean isNotNullOrEmpty(String str) {
         if (str != null && !str.equals(""))
@@ -110,8 +100,6 @@ public class StringUtil {
      *
      * @param request
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static boolean checkAjaxRequest(HttpServletRequest request) {
         String requestType = request.getHeader("X-Requested-With");
@@ -127,8 +115,6 @@ public class StringUtil {
      *
      * @param request
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static String getIp(HttpServletRequest request) {
         String szClientIP = request.getHeader("x-forwarded-for");
@@ -147,8 +133,6 @@ public class StringUtil {
      *
      * @param source
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static String filterEmoji(String source) {
         if (StringUtil.isNotNullOrEmpty(source)) {
@@ -163,8 +147,6 @@ public class StringUtil {
      *
      * @param request 请求
      * @return url地址
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static String getUrlPath(HttpServletRequest request) {
         String url;
@@ -184,8 +166,6 @@ public class StringUtil {
      *
      * @param mobile
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static boolean isMobile(String mobile) {
         Pattern p = Pattern.compile("^1[3-9]\\d{9}$");

@@ -29,8 +29,6 @@ public class Md5SaltUtil {
      *
      * @param rawPass
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public String encode(String rawPass) {
         String result = null;

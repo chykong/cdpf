@@ -31,8 +31,6 @@ public class HttpUtil {
      * @param url
      * @param json
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static String httpJsonPost(String url, String json) {
         InputStream is = null;
@@ -68,8 +66,6 @@ public class HttpUtil {
      * @param url     请求url
      * @param hashMap 参数列表
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static String httpParamsPost(String url, HashMap<String, String> hashMap) {
         InputStream is = null;
@@ -78,7 +74,6 @@ public class HttpUtil {
         try {
             HttpClient httpClient = HttpClientBuilder.create().build();
             HttpPost httpPost = new HttpPost(url);
-
 
             //方式二: 如果需要传递多个参数
             List<NameValuePair> parameters = new ArrayList<>();
@@ -110,8 +105,6 @@ public class HttpUtil {
      *
      * @param url url地址
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static String httpPGet(String url) {
         InputStream is = null;

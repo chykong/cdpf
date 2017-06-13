@@ -31,7 +31,7 @@ public class Page<T> {
     /**
      * 每页显示记录条数 ，默认是每页显示13条记录
      */
-    private int onePageCount = GlobalConst.pageSize;
+    private int onePageCount = GlobalConst.PAGESIZE;
     /**
      * 开始索引，通过当前页和每页显示记录条数计算获得
      */

@@ -5,8 +5,8 @@ import com.critc.plat.util.global.GlobalConst;
 /**
  * 类说明：页码显示效果类 。1：TextModel “第一页 上一页 下一页 最后一页”；2：NumModel “第一页 2 3 4 最后一页”；
  *
- * @author 作者: 孔垂云
- * @version 创建时间：2016-01-10
+ * @author 孔垂云
+ * @date 2017-05-23
  */
 public class PageNavigate {
     /**
@@ -72,6 +72,7 @@ public class PageNavigate {
 
     /**
      * 只传入url、当前页、总记录数
+     *
      * @param url
      * @param pageIndex
      * @param recordCount
@@ -80,7 +81,7 @@ public class PageNavigate {
         super();
         this.url = url;
         this.pageIndex = pageIndex;
-        this.pageSize = GlobalConst.pageSize;
+        this.pageSize = GlobalConst.PAGESIZE;
         this.recordCount = recordCount;
         countPage = calPageCount(recordCount, pageSize);
         if (pageIndex > countPage && countPage > 0)
@@ -131,6 +132,7 @@ public class PageNavigate {
     /**
      * 页码的模型
      * <p>
+     *
      * @param url      页面的url地址
      * @param model    页码的显示样式
      * @param numCount 数字类型的页码，共显示的个数

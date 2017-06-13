@@ -6,8 +6,7 @@ import java.util.Random;
  * 功能描述:随机数生成工具
  *
  * @author 孔垂云
- * @version 1.0.0
- * @date 2015年3月4日
+ * @date 2017-06-13
  */
 public class RandomCodeUtil {
     private static final char[] codeSequenceRandom = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '1', '2', '3', '4',
@@ -18,8 +17,6 @@ public class RandomCodeUtil {
      * 功能描述:生成字符串随机数
      *
      * @return String
-     * @version 1.0.0
-     * @author 孔垂云
      */
     public static String createRandomCode(int count) {
         String serialNum = "";
@@ -36,7 +33,6 @@ public class RandomCodeUtil {
      *
      * @param count
      * @return
-     * @author 孔垂云
      */
     public static String createRandomNum(int count) {
         String serialNum = "";

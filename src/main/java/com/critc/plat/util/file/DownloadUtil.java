@@ -6,6 +6,12 @@ import org.slf4j.LoggerFactory;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 
+/**
+ * 文件下载工具类
+ *
+ * @author 孔垂云
+ * @date 2017-05-23
+ */
 public class DownloadUtil {
     private static Logger logger = LoggerFactory.getLogger("sysLog");
 
@@ -35,25 +41,28 @@ public class DownloadUtil {
             }
         } catch (Exception e) {
             logger.error(e.getMessage());
-            e.printStackTrace();
         } finally {
             if (bis != null)
                 try {
                     bis.close();
                 } catch (IOException e) {
                     logger.error(e.getMessage());
-                    e.printStackTrace();
                 }
             if (bos != null)
                 try {
                     bos.close();
                 } catch (IOException e) {
                     logger.error(e.getMessage());
-                    e.printStackTrace();
                 }
         }
     }
 
+    /**
+     * 文件下载
+     * @param response
+     * @param filePath
+     * @param fileName
+     */
     public static void download(HttpServletResponse response, String filePath, String fileName) {
         DownloadUtil.download(response, filePath, fileName, "UTF-8");
     }

@@ -24,4 +24,12 @@ public class ComboboxVO {
     public void setContent(String content) {
         this.content = content;
     }
+
+    @Override
+    public String toString() {
+        return "ComboboxVO{" +
+                "value='" + value + '\'' +
+                ", content='" + content + '\'' +
+                '}';
+    }
 }

@@ -16,8 +16,6 @@ public class LogUtil {
      * 功能描述:记录系统日志
      *
      * @param str 要输出的字符串
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static void inf(String str) {
         sysLog.info(str);
@@ -27,8 +25,6 @@ public class LogUtil {
      * 功能描述:记录系统异常
      *
      * @param str 要输出的字符串
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static void error(String str) {
         sysLog.error(str);
@@ -38,8 +34,6 @@ public class LogUtil {
      * 功能描述:记录系统异常
      *
      * @param e 系统异常
-     * @author 孔垂云
-     * @date 2017-05-23
      */
     public static void error(Exception e) {
         sysLog.error(e.getStackTrace().toString());

@@ -54,7 +54,7 @@ public class PageUtil {
      * @return
      */
     public static String createOraclePageSQL(String sql, int pageIndex) {
-        return "SELECT * FROM ( SELECT A.*, ROWNUM RN FROM (" + sql + ") A WHERE ROWNUM <=" + pageIndex * GlobalConst.pageSize
-                + " ) WHERE RN > " + (pageIndex - 1) * GlobalConst.pageSize;
+        return "SELECT * FROM ( SELECT A.*, ROWNUM RN FROM (" + sql + ") A WHERE ROWNUM <=" + pageIndex * GlobalConst.PAGESIZE
+                + " ) WHERE RN > " + (pageIndex - 1) * GlobalConst.PAGESIZE;
     }
 }
