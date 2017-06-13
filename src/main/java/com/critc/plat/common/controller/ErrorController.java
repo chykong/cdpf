@@ -18,7 +18,7 @@ public class ErrorController {
 	@RequestMapping("error")
 	public ModelAndView error(HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("/plan/common/error");
+		mv.setViewName("/plat/common/error");
 		mv.addObject("msg", StringUtil.decodeUrl(request.getParameter("msg")));
 		mv.addObject("backUrl", StringUtil.decodeUrl(request.getParameter("backUrl")));
 		return mv;

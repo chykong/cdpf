@@ -27,8 +27,8 @@ import java.util.List;
  * Date  2017/6/10.
  * 系统的所有权限控制都在该类中处理，共有三个cache
  * 1、系统左侧菜单，通过RoleId来生成，cache格式为roleMenu_+roleId
- * 2、系统所有按钮权限，页面显示按钮时使用，cache格式为hashRoleFunctions_+roleId
- * 3、系统能访问资源权限，包括所有资源的url，hashmap数据类型，key为url，value为0/1，,1具有权限，0不具有权限，cache格式为hashRoleResources_+roleId
+ * 2、系统所有按钮权限，页面显示按钮时使用，cache格式为roleFunctions_+roleId
+ * 3、系统能访问资源权限，包括所有资源的url，hashmap数据类型，key为url，value为0/1，,1具有权限，0不具有权限，cache格式为roleResources_+roleId
  * 当修改模块或新增删除模块时，清空所有cache，当角色修改时，清空上述三个对应roleId的cache
  */
 @Service
@@ -92,8 +92,8 @@ public class SysRoleService {
                 sysRoleresourceDao.addRoleResource(sysRole.getId(), Integer.parseInt(functionSplit[i]));
             }
         }
-        EhCacheUtil.remove("sysCache", "hashRoleFunctions_" + sysRole.getId());
-        EhCacheUtil.remove("sysCache", "hashRoleResources_" + sysRole.getId());
+        EhCacheUtil.remove("sysCache", "roleFunctions_" + sysRole.getId());
+        EhCacheUtil.remove("sysCache", "roleResources_" + sysRole.getId());
         EhCacheUtil.remove("sysCache", "roleMenu_" + sysRole.getId());
         return 1;
     }
@@ -109,8 +109,8 @@ public class SysRoleService {
         flag = sysRoleDao.delete(id);
         if (flag == 1) {
             sysRoleresourceDao.deleteRoleResource(id);
-            EhCacheUtil.remove("sysCache", "hashRoleFunctions_" + id);
-            EhCacheUtil.remove("sysCache", "hashRoleResources_" + id);
+            EhCacheUtil.remove("sysCache", "roleFunctions_" + id);
+            EhCacheUtil.remove("sysCache", "roleResources_" + id);
             EhCacheUtil.remove("sysCache", "roleMenu_" + id);
         }
         return flag;

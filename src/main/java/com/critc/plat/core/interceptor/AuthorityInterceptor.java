@@ -50,25 +50,23 @@ public class AuthorityInterceptor implements HandlerInterceptor {
         //记操作日志
         logOperation(path, parameters, userSession);
         //目前只校验add/update/delete/save/import开头的方法，其余不校验
-        if (checkUrl(operaMethod)) {
-            boolean checked = sysRoleService.checkAuthority(userSession.getRoleId(), path);
-            if (checked) {
+        boolean checked = sysRoleService.checkAuthority(userSession.getRoleId(), path);
+        if (checked) {
+            if (checkUrl(operaMethod)) {
                 //记录数据库日志
                 sysLogService.addLog(userSession.getUserId(), path, parameters, userSession.getUserIp());
-                return true;
-            } else {
-                boolean isAjaxRequest = StringUtil.checkAjaxRequest(request);
-                if (isAjaxRequest) {
-                    WebUtil.out(response, JsonUtil.createOperaStr(false, "权限不足"));
-                } else {
-                    String location = pubConfig.getDynamicServer() + "/error.htm?msg=" + StringUtil.encodeUrl("权限不足");
-                    String str = "<script>location.href='" + location + "';</script>";
-                    WebUtil.out(response, str);
-                }
-                return false;
             }
-        } else {
             return true;
+        } else {
+            boolean isAjaxRequest = StringUtil.checkAjaxRequest(request);
+            if (isAjaxRequest) {
+                WebUtil.out(response, JsonUtil.createOperaStr(false, "权限不足"));
+            } else {
+                String location = pubConfig.getDynamicServer() + "/error.htm?msg=" + StringUtil.encodeUrl("权限不足");
+                String str = "<script>location.href='" + location + "';</script>";
+                WebUtil.out(response, str);
+            }
+            return false;
         }
     }
 
