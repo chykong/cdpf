@@ -13,6 +13,7 @@ import java.util.List;
  * 系统日志dao
  *
  * @author 孔垂云
+ * @date 2017-06-13
  */
 @Repository
 public class SysLogDao extends BaseDao<SysLog, SysLogSearchVO> {

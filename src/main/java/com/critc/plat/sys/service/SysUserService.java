@@ -14,8 +14,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Author  孔垂云
- * Date  2017/6/10.
+ * 系统用户管理Service
+ *
+ * @author 孔垂云
+ * @date 2017-06-13
  */
 @Service
 public class SysUserService {

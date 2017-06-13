@@ -16,8 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  * 未登录直接跳转至登录页面
  *
  * @author 孔垂云
- * @version 1.0.0
- * @2015年2月22日
+ * @date 2017-06-13
  */
 public class CheckLoginInterceptor implements HandlerInterceptor {
 

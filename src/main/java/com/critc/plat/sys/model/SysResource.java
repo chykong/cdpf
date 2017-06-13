@@ -2,8 +2,10 @@ package com.critc.plat.sys.model;
 
 
 /**
- * Author  孔垂云
- * Date  2017/6/10.
+ * 系统资源
+ *
+ * @author 孔垂云
+ * @date 2017-06-13
  */
 public class SysResource {
     private int id;//编号

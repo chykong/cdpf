@@ -3,8 +3,10 @@ package com.critc.plat.sys.model;
 import java.util.Date;
 
 /**
- * Author  孔垂云
- * Date  2017/6/10.
+ * 系统角色
+ *
+ * @author 孔垂云
+ * @date 2017-06-13
  */
 public class SysRole {
     private int id;// 角色id

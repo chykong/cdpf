@@ -10,9 +10,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-/**
- * Author  孔垂云
- * Date  2017/6/10.
+/**系统用户Dao
+ * @author 孔垂云
+ * @date 2017-06-13
  */
 @Repository
 public class SysUserDao extends BaseDao<SysUser, SysUserSearchVO> {

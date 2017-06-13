@@ -12,8 +12,10 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Author  孔垂云
- * Date  2017/6/10.
+ * 系统资源Service
+ *
+ * @author 孔垂云
+ * @date 2017-06-13
  */
 @Service
 public class SysResourceService {

@@ -5,7 +5,8 @@ import java.util.Date;
 /**
  * 用户登录信息
  *
- * @author chykong
+ * @author 孔垂云
+ * @date 2017-06-13
  */
 public class SysUserLogin {
     private int id;//编号

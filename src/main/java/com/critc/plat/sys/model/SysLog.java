@@ -5,7 +5,8 @@ import java.util.Date;
 /**
  * 操作日志
  *
- * @author chykong
+ * @author 孔垂云
+ * @date 2017-06-13
  */
 public class SysLog {
     private long id;

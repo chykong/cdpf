@@ -6,7 +6,8 @@ import com.critc.plat.util.page.PageSearchVO;
 /**
  * 日志管理查询条件
  *
- * @author chykong
+ * @author 孔垂云
+ * @date 2017-06-13
  */
 public class SysLogSearchVO extends PageSearchVO {
     private Integer userId;//用户id

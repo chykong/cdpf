@@ -3,10 +3,12 @@ package com.critc.plat.sys.vo;
 import com.critc.plat.util.page.PageSearchVO;
 
 /**
- * Author  孔垂云
- * Date  2017/6/11.
+ * 用户登录查询条件
+ *
+ * @author 孔垂云
+ * @date 2017-06-13
  */
-public class SysUserloginSearchVO extends PageSearchVO{
+public class SysUserloginSearchVO extends PageSearchVO {
     private Integer userId;
 
     @Override

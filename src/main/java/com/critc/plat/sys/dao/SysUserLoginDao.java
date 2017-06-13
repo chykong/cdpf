@@ -10,6 +10,9 @@ import java.util.List;
 
 /**
  * 用户登录DAO
+ *
+ * @author 孔垂云
+ * @date 2017-06-13
  */
 @Repository
 public class SysUserLoginDao extends BaseDao<SysUserLogin, SysUserloginSearchVO> {

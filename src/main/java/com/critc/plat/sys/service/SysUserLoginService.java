@@ -9,6 +9,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * 系统登录Service
+ *
+ * @author 孔垂云
+ * @date 2017-06-13
+ */
 @Service
 public class SysUserLoginService {
     @Autowired

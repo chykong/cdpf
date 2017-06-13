@@ -25,8 +25,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
- * Author  孔垂云
- * Date  2017/6/10.
+ * 系统用户管理Controller
+ *
+ * @author 孔垂云
+ * @date 2017-06-13
  */
 @RequestMapping("/sys/user")
 @Controller

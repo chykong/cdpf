@@ -21,7 +21,8 @@ import java.util.List;
 /**
  * 系统日志service
  *
- * @author chykong
+ * @author 孔垂云
+ * @date 2017-06-13
  */
 @Service
 public class SysLogService {
@@ -35,7 +36,7 @@ public class SysLogService {
      */
     @Async
     public void addLog(int userId, String url, String parameters, String operaIp) {
-        HashMap<String, SysResource> hashMap =sysResourceService.getAllResource();//获取所有资源
+        HashMap<String, SysResource> hashMap = sysResourceService.getAllResource();//获取所有资源
 
         SysLog sysLog = new SysLog();
         sysLog.setUserId(userId);

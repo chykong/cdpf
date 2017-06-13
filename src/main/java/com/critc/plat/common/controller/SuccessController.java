@@ -10,12 +10,20 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * 操作成功处理controller
+ * @author 孔垂云
+ * @date 2017-05-23
  */
 @Controller
 @RequestMapping("/")
 public class SuccessController {
 
-	@RequestMapping("success")
+	/**
+	 * 成功处理操作
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	@RequestMapping("/success")
 	public ModelAndView success(HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("/plat/common/success");

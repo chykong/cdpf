@@ -3,13 +3,14 @@ package com.critc.plat.sys.model;
 import java.util.Date;
 
 /**
- * Author  孔垂云
- * Date  2017/6/10.
+ * 系统用户
+ *
+ * @author 孔垂云
+ * @date 2017-06-13
  */
 public class SysUser {
 
     private int id;//用户id
-//    @Column(name = "role_id")
     private int roleId;//所属角色
     private String roleName;//角色描述
     private String username;//登录账号

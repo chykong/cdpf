@@ -3,8 +3,10 @@ package com.critc.plat.core.pub;
 import org.springframework.stereotype.Component;
 
 /**
- * Author  孔垂云
- * Date  2017/6/11.
+ * 全局参数配置，用于在后端获取参数
+ *
+ * @author 孔垂云
+ * @date 2017-06-13
  */
 @Component
 public class PubConfig {

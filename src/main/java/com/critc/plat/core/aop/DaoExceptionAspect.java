@@ -10,13 +10,14 @@ import org.slf4j.LoggerFactory;
  * dao层异常拦截记录，用于捕捉Dao层的所有异常信息，并记录日志
  *
  * @author 孔垂云
+ * @date 2017-06-13
  */
 
 @Aspect
 public class DaoExceptionAspect {
     private static Logger logger = LoggerFactory.getLogger("daoLog");
 
-    @AfterThrowing(value = "execution (* com.critc.*.dao.*.*(..))", throwing = "e")
+    @AfterThrowing(value = "execution (* com.critc.*.*.dao.*.*(..))", throwing = "e")
     public void loggingException(JoinPoint joinPoint, Exception e) {
         // 拦截的实体类
         Object target = joinPoint.getTarget(); // 拦截的方法名称

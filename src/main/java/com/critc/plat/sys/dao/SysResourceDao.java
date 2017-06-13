@@ -7,8 +7,10 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * Author  孔垂云
- * Date  2017/6/10.
+ * 系统资源管理Dao
+ *
+ * @author 孔垂云
+ * @date 2017-06-13
  */
 @Repository
 public class SysResourceDao extends BaseDao<SysResource, SysResource> {
@@ -47,6 +49,7 @@ public class SysResourceDao extends BaseDao<SysResource, SysResource> {
         String sql = "delete from t_sys_resource where id=?";
         return delete(sql, id);
     }
+
     /**
      * 按上级id删除，删除对应的功能
      *
@@ -107,12 +110,13 @@ public class SysResourceDao extends BaseDao<SysResource, SysResource> {
      * @param parentId
      * @return
      */
-    public List<SysResource> listByParentId(int parentId ){
+    public List<SysResource> listByParentId(int parentId) {
         String sql = "select t.id,t.name,t.code,t.parent_id,t.url,t.target,t.iconimg,t.display_order,t.type,t.description,(select count(*) from t_sys_resource where parent_id=t.id) cnt from t_sys_resource t where parent_id=? order by display_order";
         return list(sql, parentId);
     }
 
-    /**s
+    /**
+     * s
      * 根据角色id获取模块
      *
      * @param roleId

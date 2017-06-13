@@ -25,6 +25,7 @@ import java.util.regex.Pattern;
  * 同时记录下日志
  *
  * @author 孔垂云
+ * @date 2017-06-13
  */
 public class AuthorityInterceptor implements HandlerInterceptor {
     @Autowired

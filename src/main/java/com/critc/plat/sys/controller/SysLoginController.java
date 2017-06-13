@@ -20,8 +20,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 
 /**
- * @Author 孔垂云
- * @Date 2017/6/12.
+ * 系统登录校验，及首页显示
+ *
+ * @author 孔垂云
+ * @date 2017-06-13
  */
 @RequestMapping("/")
 @Controller

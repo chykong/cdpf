@@ -23,8 +23,11 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Author  孔垂云
- * Date  2017/6/10.
+ * 系统角色处理Service
+ *
+ * @author 孔垂云
+ * @date 2017-06-13
+ * <p>
  * 系统的所有权限控制都在该类中处理，共有三个cache
  * 1、系统左侧菜单，通过RoleId来生成，cache格式为roleMenu_+roleId
  * 2、系统所有按钮权限，页面显示按钮时使用，cache格式为roleFunctions_+roleId
@@ -201,7 +204,7 @@ public class SysRoleService {
      * 校验所有权限，防止不通过浏览器提交
      *
      * @param roleId 角色id
-     * @param path url路径
+     * @param path   url路径
      * @return
      */
     public boolean checkAuthority(int roleId, String path) {

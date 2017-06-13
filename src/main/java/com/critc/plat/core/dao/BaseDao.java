@@ -15,8 +15,9 @@ import java.util.List;
 
 /**
  * 基础DAO，用于封装dao操作
- * Author  孔垂云
- * Date  2017/5/24.
+ *
+ * @author 孔垂云
+ * @date 2017-06-13
  */
 @Component
 public class BaseDao<T, S> {

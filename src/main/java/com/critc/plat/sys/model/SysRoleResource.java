@@ -1,8 +1,10 @@
 package com.critc.plat.sys.model;
 
 /**
- * Author  孔垂云
- * Date  2017/6/11.
+ * 系统角色对应资源
+ *
+ * @author 孔垂云
+ * @date 2017-06-13
  */
 public class SysRoleResource {
     private int id;//id
