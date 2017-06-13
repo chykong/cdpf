@@ -1,16 +1,12 @@
 package com.critc.plat.sys.model;
 
-import javax.persistence.Column;
-
 /**
  * Author  孔垂云
  * Date  2017/6/11.
  */
 public class SysRoleResource {
     private int id;//id
-    @Column(name = "role_id")
     private int roleId;//角色id
-    @Column(name = "resource_id")
     private int resourceId;//资源id
     private String resourceCode;//角色代码
     private String url;//链接

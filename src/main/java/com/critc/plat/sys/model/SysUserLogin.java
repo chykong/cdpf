@@ -1,6 +1,5 @@
 package com.critc.plat.sys.model;
 
-import javax.persistence.Column;
 import java.util.Date;
 
 /**
@@ -10,11 +9,8 @@ import java.util.Date;
  */
 public class SysUserLogin {
     private int id;//编号
-    @Column(name = "user_id")
     private int userId;//id
-    @Column(name = "login_date")
     private Date loginDate;//登录时间
-    @Column(name = "login_ip")
     private String loginIp;//登录IP
 
     private String terminal;//终端

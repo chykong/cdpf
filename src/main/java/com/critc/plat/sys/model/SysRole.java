@@ -1,6 +1,5 @@
 package com.critc.plat.sys.model;
 
-import javax.persistence.Column;
 import java.util.Date;
 
 /**
@@ -13,13 +12,9 @@ public class SysRole {
     private String description;//描述
     private int displayOrder;//排序
 
-    @Column(name = "created_by")
     private String createdBy;//创建人
-    @Column(name = "created_at")
     private Date createdAt;//创建时间
-    @Column(name = "last_modified_by")
     private String lastModifiedBy;//最后修改人
-    @Column(name = "last_modified_at")
     private Date lastModifiedAt;//最后修改时间
 
     @Override

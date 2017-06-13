@@ -1,6 +1,5 @@
 package com.critc.plat.sys.model;
 
-import javax.persistence.Column;
 import java.util.Date;
 
 /**
@@ -10,19 +9,12 @@ import java.util.Date;
  */
 public class SysLog {
     private long id;
-    @Column(name = "user_id")
     private int userId;//用户id
-    @Column(name = "opera_date")
     private Date operaDate;//操作日期
-    @Column(name = "opera_ip")
     private String operaIp;//ip地址
-    @Column(name = "module_name")
     private String moduleName;//模块id
-    @Column(name = "opera_name")
     private String operaName;//操作名称
-    @Column(name = "opera_url")
     private String operaUrl;//操作url
-    @Column(name = "opera_params")
     private String operaParams;//参数
     private String realname;//用户姓名
 

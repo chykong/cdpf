@@ -1,6 +1,5 @@
 package com.critc.plat.sys.model;
 
-import javax.persistence.Column;
 
 /**
  * Author  孔垂云
@@ -10,7 +9,6 @@ public class SysResource {
     private int id;//编号
     private String name;//资源名称
     private String code;//资源代码
-    @Column(name = "parent_id")
     private Integer parentId;//上级节点id
     private String parentName;//上级节点名称
     private String url;//链接
@@ -18,7 +16,6 @@ public class SysResource {
     private String target;//链接目标
     private int type;//资源类型1模块，2操作
     private String description;//描述
-    @Column(name = "display_order")
     private int displayOrder;//排序
     private int cnt;//子节点数量
 
