@@ -19,9 +19,21 @@ public class SysRoleresourceDao extends BaseDao<SysRoleResource, SysRoleResource
      * @param roleId
      * @return
      */
-    public List<SysRoleResource> listRoleResource(int roleId, int type) {
+    public List<SysRoleResource> listRoleResourceByType(int roleId, int type) {
         String sql = "select r.role_id,r.resource_id,s.code resourceCode,s.url from t_sys_roleresource r,t_sys_resource s where r.resource_id=s.id and r.role_id=? and type=? ";
         return list(sql, roleId, type);
+    }
+
+    /**
+     * 根据角色id获取所有资源
+     *
+     * @param roleId
+     * @return
+     */
+    public List<SysRoleResource> listRoleResource(int roleId) {
+        String sql = "select s.url,nvl((select id from t_sys_roleresource where role_id=10 and resource_id=s.id),0) resourceId " +
+                " from t_sys_resource s  where s.url!='#'";
+        return list(sql, roleId);
     }
 
     /**
@@ -44,4 +56,6 @@ public class SysRoleresourceDao extends BaseDao<SysRoleResource, SysRoleResource
         String sql = "insert into t_sys_roleresource(id,role_id,resource_id) values(seq_t_sys_resource.nextval,?,?)";
         update(sql, roleId, resourceId);
     }
+
+
 }
