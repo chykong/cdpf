@@ -65,7 +65,7 @@ public class SysResourceDao extends BaseDao<SysResource, SysResource> {
      * @return
      */
     public SysResource get(int id) {
-        String sql = "select t.*,(select name from t_sys_resource where id=t.parent_id) parent_name from t_sys_resource t where id=?";
+        String sql = "select t.id,t.name,t.code,t.parent_id,t.url,t.target,t.iconimg,t.display_order,t.type,t.description,(select name from t_sys_resource where id=t.parent_id) parent_name from t_sys_resource t where id=?";
         return get(sql, id);
     }
 
@@ -75,7 +75,7 @@ public class SysResourceDao extends BaseDao<SysResource, SysResource> {
      * @return
      */
     public List<SysResource> list() {
-        String sql = "select t.*,(select count(*) from t_sys_resource where parent_id=t.id) cnt,(select name from t_sys_resource where id=t.parent_id)parentName" +
+        String sql = "select t.id,t.name,t.code,t.parent_id,t.url,t.target,t.iconimg,t.display_order,t.type,t.description,(select count(*) from t_sys_resource where parent_id=t.id) cnt,(select name from t_sys_resource where id=t.parent_id)parentName" +
                 " from t_sys_resource t order by parent_id, display_order";
         return list(sql);
     }
@@ -86,7 +86,7 @@ public class SysResourceDao extends BaseDao<SysResource, SysResource> {
      * @return
      */
     public List<SysResource> listByType(int type) {
-        String sql = "select m.*,(select count(*) from t_sys_resource where parent_id=m.id) cnt from t_sys_resource m where type =? order by parent_id, display_order";
+        String sql = "select t.id,t.name,t.code,t.parent_id,t.url,t.target,t.iconimg,t.display_order,t.type,t.description,(select count(*) from t_sys_resource where parent_id=m.id) cnt from t_sys_resource t where type =? order by parent_id, display_order";
         return list(sql, type);
     }
 
@@ -108,7 +108,7 @@ public class SysResourceDao extends BaseDao<SysResource, SysResource> {
      * @return
      */
     public List<SysResource> listByParentId(int parentId ){
-        String sql = "select m.*,(select count(*) from t_sys_resource where parent_id=m.id) cnt from t_sys_resource m where parent_id=? order by display_order";
+        String sql = "select t.id,t.name,t.code,t.parent_id,t.url,t.target,t.iconimg,t.display_order,t.type,t.description,(select count(*) from t_sys_resource where parent_id=m.id) cnt from t_sys_resource t where parent_id=? order by display_order";
         return list(sql, parentId);
     }
 
@@ -119,7 +119,7 @@ public class SysResourceDao extends BaseDao<SysResource, SysResource> {
      * @return
      */
     public List<SysResource> listByRoleId(int roleId) {
-        String sql = "select m.* from t_sys_resource m";
+        String sql = "select t.id,t.name,t.code,t.parent_id,t.url,t.target,t.iconimg,t.display_order,t.type,t.description from t_sys_resource ";
         sql += " where id in (select  module_id from t_sys_rolemodule where role_id =?)";
         sql += " order by parent_id, display_order";
         return list(sql, roleId);
@@ -132,18 +132,9 @@ public class SysResourceDao extends BaseDao<SysResource, SysResource> {
      * @return
      */
     public SysResource getByModuleCode(String code) {
-        String sql = "select * from t_sys_resource where code=?";
+        String sql = "select t.id,t.name,t.code,t.parent_id,t.url,t.target,t.iconimg,t.display_order,t.type,t.description from t_sys_resource t where code=?";
         return get(sql, code);
     }
 
-    /**
-     * 根据url获取模块
-     *
-     * @param url
-     * @return
-     */
-    public SysResource getByUrl(String url) {
-        String sql = "select m.* from t_sys_resource m where url=? ";
-        return get(sql, url);
-    }
+
 }

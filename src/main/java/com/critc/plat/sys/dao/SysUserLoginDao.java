@@ -14,6 +14,11 @@ import java.util.List;
 @Repository
 public class SysUserLoginDao extends BaseDao<SysUserLogin, SysUserloginSearchVO> {
 
+    /**
+     * 插入登录日志
+     *
+     * @param sysUserLogin
+     */
     public void add(SysUserLogin sysUserLogin) {
         String sql = "insert into t_sys_userlogin(id,user_id,login_date,login_ip,terminal,explorerType,explorerVersion)";
         sql += " values(seq_t_sys_userlogin.nextval,:userId,:loginDate,:loginIp,:terminal,:explorerType,:explorerVersion)";
@@ -27,12 +32,12 @@ public class SysUserLoginDao extends BaseDao<SysUserLogin, SysUserloginSearchVO>
      * @return
      */
     public SysUserLogin getLastLogin(int userId) {
-        String sql = "select * from t_sys_userlogin where user_id=? and rownum<2 order by login_date desc";
+        String sql = "select t.id,t.user_id,t.login_date,t.login_ip,t.terminal,t.explorertype,t.explorerversion from t_sys_userlogin t where user_id=? and rownum<2 order by login_date desc";
         return get(sql, userId);
     }
 
     public List<SysUserLogin> list(SysUserloginSearchVO sysUserloginSearchVO) {
-        String sql = "select * from t_sys_userlogin where user_id=? order by login_date desc ";
+        String sql = "select t.id,t.user_id,t.login_date,t.login_ip,t.terminal,t.explorertype,t.explorerversion from t_sys_userlogin t where user_id=? order by login_date desc ";
         sql = PageUtil.createOraclePageSQL(sql, sysUserloginSearchVO.getPageIndex());
         return list(sql, sysUserloginSearchVO.getUserId());
     }

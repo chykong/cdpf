@@ -16,12 +16,22 @@ import java.util.List;
  */
 @Repository
 public class SysUserDao extends BaseDao<SysUser, SysUserSearchVO> {
+    /**
+     * 新增用户
+     * @param sysUser
+     * @return
+     */
     public int add(SysUser sysUser) {
         String sql = "insert into t_sys_user(id,username,password,randomcode,status,realname,mobile,created_at,created_by,role_id)";
         sql += " values(seq_t_sys_user.nextval,:username,:password,:randomcode,1,:realname,:mobile,sysdate,:createdBy,:roleId)";
         return insertForId(sql, sysUser, "id");
     }
 
+    /**
+     * 修改用户
+     * @param sysUser
+     * @return
+     */
     public int update(SysUser sysUser) {
         String sql = "update t_sys_user set realname=:realname,role_id=:roleId,mobile=:mobile,last_modified_by=:lastModifiedBy,last_modified_at=sysdate where id=:id ";
         return update(sql, sysUser);
@@ -64,13 +74,18 @@ public class SysUserDao extends BaseDao<SysUser, SysUserSearchVO> {
         return update(sql, status, id);
     }
 
+    /**
+     * 删除用户
+     * @param id
+     * @return
+     */
     public int delete(int id) {
         String sql = "delete from t_sys_user where id=?";
         return delete(sql, id);
     }
 
     public SysUser get(int id) {
-        String sql = "select * from t_sys_user where id=?";
+        String sql = "select t.id,t.id,t.username,t.password,t.randomcode,t.status,t.realname,t.mobile,t.created_at,t.created_by,t.role_id,t.last_modified_by,t.last_modified_at from t_sys_user t where id=?";
         return get(sql, id);
     }
 
@@ -81,7 +96,7 @@ public class SysUserDao extends BaseDao<SysUser, SysUserSearchVO> {
      * @return
      */
     public SysUser getByUsername(String username) {
-        String sql = "select t.*,(select name from t_sys_role where id=role_id) roleName from t_sys_user t where username=?";
+        String sql = "select t.id,t.id,t.username,t.password,t.randomcode,t.status,t.realname,t.mobile,t.created_at,t.created_by,t.role_id,t.last_modified_by,t.last_modified_at,(select name from t_sys_role where id=role_id) roleName from t_sys_user t where username=?";
         return get(sql, username);
     }
 
@@ -92,7 +107,7 @@ public class SysUserDao extends BaseDao<SysUser, SysUserSearchVO> {
      * @return
      */
     public List<SysUser> list(SysUserSearchVO sysUserSearchVO) {
-        String sql = "select t.*,(select name from t_sys_role where id=t.role_id) roleName  from t_sys_user t where 1=1 ";
+        String sql = "select t.id,t.id,t.username,t.password,t.randomcode,t.status,t.realname,t.mobile,t.created_at,t.created_by,t.role_id,t.last_modified_by,t.last_modified_at,(select name from t_sys_role where id=t.role_id) roleName  from t_sys_user t where 1=1 ";
         sql += createSearchSql(sysUserSearchVO);
         sql += " order by id asc";
         sql = PageUtil.createOraclePageSQL(sql, sysUserSearchVO.getPageIndex());
@@ -100,7 +115,7 @@ public class SysUserDao extends BaseDao<SysUser, SysUserSearchVO> {
     }
 
     public List<SysUser> listAll() {
-        String sql = "select t.*,(select name from t_sys_role where id=role_id) roleName  from t_sys_user t ";
+        String sql = "select t.id,t.id,t.username,t.password,t.randomcode,t.status,t.realname,t.mobile,t.created_at,t.created_by,t.role_id,t.last_modified_by,t.last_modified_at,(select name from t_sys_role where id=role_id) roleName  from t_sys_user t ";
         sql += " order by id asc";
         return list(sql);
     }

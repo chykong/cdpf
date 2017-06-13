@@ -43,7 +43,8 @@ public class SysLogDao extends BaseDao<SysLog, SysLogSearchVO> {
      * @return
      */
     public List<SysLog> listAll(SysLogSearchVO sysLogSearchVO) {
-        String sql = "select l.*,u.code user_code,u.realname realname  from t_sys_log l,t_sys_user u where l.user_id=u.id  ";
+        String sql = "select t.id,t.user_id,t.opera_date,t.operea_ip,t.module_name,t.opera_date,t.opera_url" +
+                ",u.code user_code,u.realname realname  from t_sys_log t,t_sys_user u where t.user_id=u.id  ";
         sql += createSearchSql(sysLogSearchVO);
         sql += " order by opera_date desc";
         List<SysLog> list = list(sql, sysLogSearchVO);
