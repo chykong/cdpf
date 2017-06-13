@@ -75,7 +75,8 @@ public class SysResourceDao extends BaseDao<SysResource, SysResource> {
      * @return
      */
     public List<SysResource> list() {
-        String sql = "select m.*,(select count(*) from t_sys_resource where parent_id=m.id) cnt from t_sys_resource m order by parent_id, display_order";
+        String sql = "select t.*,(select count(*) from t_sys_resource where parent_id=t.id) cnt,(select name from t_sys_resource where id=t.parent_id)parentName" +
+                " from t_sys_resource t order by parent_id, display_order";
         return list(sql);
     }
 
