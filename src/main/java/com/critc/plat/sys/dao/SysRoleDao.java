@@ -49,7 +49,7 @@ public class SysRoleDao extends BaseDao<SysRole, SysRole> {
     }
 
     public SysRole get(int id) {
-        String sql = "select t.id,t.name,t.descriptiont,t.display_order,t.created_by,t.created_at,t.last_modified_at,t.last_modified_by from t_sys_role t where id=? ";
+        String sql = "select t.id,t.name,t.description,t.display_order,t.created_by,t.created_at,t.last_modified_at,t.last_modified_by from t_sys_role t where id=? ";
         return get(sql, id);
     }
 
@@ -59,7 +59,7 @@ public class SysRoleDao extends BaseDao<SysRole, SysRole> {
      * @return
      */
     public List<SysRole> list() {
-        String sql = "select t.id,t.name,t.descriptiont,t.display_order,t.created_by,t.created_at,t.last_modified_at,t.last_modified_by from t_sys_role t order by display_order asc ";
+        String sql = "select t.id,t.name,t.description,t.display_order,t.created_by,t.created_at,t.last_modified_at,t.last_modified_by from t_sys_role t order by display_order asc ";
         return list(sql);
     }
 

@@ -150,7 +150,7 @@ public class SysResourceController extends BaseController {
     public ModelAndView functionIndex(HttpServletRequest request, int parentId) {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("/plat/sys/resource/functionIndex");
-        List<SysResource> list = sysResourceService.listByParentId();
+        List<SysResource> list = sysResourceService.listByParentId(parentId);
         mv.addObject("list", list);// 把获取的记录放到mv里面
         mv.addObject("resource", sysResourceService.get(parentId));//取得父节点放入mv
         String url = pubConfig.getDynamicServer() + "/sys/resource/functionIndex.htm?parentId=" + parentId;

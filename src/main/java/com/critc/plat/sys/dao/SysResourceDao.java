@@ -86,7 +86,7 @@ public class SysResourceDao extends BaseDao<SysResource, SysResource> {
      * @return
      */
     public List<SysResource> listByType(int type) {
-        String sql = "select t.id,t.name,t.code,t.parent_id,t.url,t.target,t.iconimg,t.display_order,t.type,t.description,(select count(*) from t_sys_resource where parent_id=m.id) cnt from t_sys_resource t where type =? order by parent_id, display_order";
+        String sql = "select t.id,t.name,t.code,t.parent_id,t.url,t.target,t.iconimg,t.display_order,t.type,t.description,(select count(*) from t_sys_resource where parent_id=t.id) cnt from t_sys_resource t where type =? order by parent_id, display_order";
         return list(sql, type);
     }
 
@@ -108,11 +108,11 @@ public class SysResourceDao extends BaseDao<SysResource, SysResource> {
      * @return
      */
     public List<SysResource> listByParentId(int parentId ){
-        String sql = "select t.id,t.name,t.code,t.parent_id,t.url,t.target,t.iconimg,t.display_order,t.type,t.description,(select count(*) from t_sys_resource where parent_id=m.id) cnt from t_sys_resource t where parent_id=? order by display_order";
+        String sql = "select t.id,t.name,t.code,t.parent_id,t.url,t.target,t.iconimg,t.display_order,t.type,t.description,(select count(*) from t_sys_resource where parent_id=t.id) cnt from t_sys_resource t where parent_id=? order by display_order";
         return list(sql, parentId);
     }
 
-    /**
+    /**s
      * 根据角色id获取模块
      *
      * @param roleId

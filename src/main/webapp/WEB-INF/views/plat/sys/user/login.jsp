@@ -24,8 +24,8 @@
             <c:forEach items="${list }" var="sysUserLogin" varStatus="st">
                 <tr>
                     <td>${st.index+1 }</td>
-                    <td><fmt:formatDate value="${sysUserLogin.login_date }" pattern="yyyy-MM-dd HH:mm"/></td>
-                    <td>${sysUserLogin.login_ip }</td>
+                    <td><fmt:formatDate value="${sysUserLogin.loginDate }" pattern="yyyy-MM-dd HH:mm"/></td>
+                    <td>${sysUserLogin.loginIp }</td>
                     <td>${sysUserLogin.terminal }</td>
                     <td>${sysUserLogin.explorerType }</td>
                     <td>${sysUserLogin.explorerVersion}</td>

@@ -96,7 +96,7 @@ public class SysUserDao extends BaseDao<SysUser, SysUserSearchVO> {
      * @return
      */
     public SysUser getByUsername(String username) {
-        String sql = "select t.id,t.id,t.username,t.password,t.randomcode,t.status,t.realname,t.mobile,t.created_at,t.created_by,t.role_id,t.last_modified_by,t.last_modified_at,(select name from t_sys_role where id=role_id) roleName from t_sys_user t where username=?";
+        String sql = "select t.id,t.username,t.password,t.randomcode,t.status,t.realname,t.mobile,t.created_at,t.created_by,t.role_id,t.last_modified_by,t.last_modified_at,(select name from t_sys_role where id=role_id) roleName from t_sys_user t where username=?";
         return get(sql, username);
     }
 
@@ -107,7 +107,7 @@ public class SysUserDao extends BaseDao<SysUser, SysUserSearchVO> {
      * @return
      */
     public List<SysUser> list(SysUserSearchVO sysUserSearchVO) {
-        String sql = "select t.id,t.id,t.username,t.password,t.randomcode,t.status,t.realname,t.mobile,t.created_at,t.created_by,t.role_id,t.last_modified_by,t.last_modified_at,(select name from t_sys_role where id=t.role_id) roleName  from t_sys_user t where 1=1 ";
+        String sql = "select t.id,t.username,t.password,t.randomcode,t.status,t.realname,t.mobile,t.created_at,t.created_by,t.role_id,t.last_modified_by,t.last_modified_at,(select name from t_sys_role where id=t.role_id) roleName  from t_sys_user t where 1=1 ";
         sql += createSearchSql(sysUserSearchVO);
         sql += " order by id asc";
         sql = PageUtil.createOraclePageSQL(sql, sysUserSearchVO.getPageIndex());
@@ -115,7 +115,7 @@ public class SysUserDao extends BaseDao<SysUser, SysUserSearchVO> {
     }
 
     public List<SysUser> listAll() {
-        String sql = "select t.id,t.id,t.username,t.password,t.randomcode,t.status,t.realname,t.mobile,t.created_at,t.created_by,t.role_id,t.last_modified_by,t.last_modified_at,(select name from t_sys_role where id=role_id) roleName  from t_sys_user t ";
+        String sql = "select t.id,t.username,t.password,t.randomcode,t.status,t.realname,t.mobile,t.created_at,t.created_by,t.role_id,t.last_modified_by,t.last_modified_at,(select name from t_sys_role where id=role_id) roleName  from t_sys_user t ";
         sql += " order by id asc";
         return list(sql);
     }
