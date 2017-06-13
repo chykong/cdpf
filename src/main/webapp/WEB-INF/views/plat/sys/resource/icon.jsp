@@ -413,8 +413,8 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn " data-dismiss="modal">关闭</button>
-            <button type="button" class="btn btn-primary" onclick="window.open('http://fontawesome.io/icons/')">更多</button>
+            <button type="button" class="btn btn-primary" onclick="window.open('http://fontawesome.io/icons/')">更多
+            </button>
         </div>
     </div>
-</div>
 </div>
