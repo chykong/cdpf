@@ -10,7 +10,7 @@ import java.util.Date;
 public class SysUser {
 
     private int id;//用户id
-    @Column(name = "role_id")
+//    @Column(name = "role_id")
     private int roleId;//所属角色
     private String roleName;//角色描述
     private String username;//登录账号

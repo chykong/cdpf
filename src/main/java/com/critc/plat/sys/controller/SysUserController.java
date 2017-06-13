@@ -48,7 +48,7 @@ public class SysUserController extends BaseController {
     @RequestMapping("/index")
     public ModelAndView index(HttpServletRequest request, HttpServletResponse response, SysUserSearchVO sysUserSearchVO) {
         ModelAndView mv = new ModelAndView();
-        int recordCount = sysUserService.listCount(sysUserSearchVO);// 获取查询总数
+        int recordCount = sysUserService.count(sysUserSearchVO);// 获取查询总数
         String url = createUrl(sysUserSearchVO);
         PageNavigate pageNavigate = new PageNavigate(url, sysUserSearchVO.getPageIndex(), recordCount);//定义分页对象
         List<SysUser> list = sysUserService.list(sysUserSearchVO);
@@ -224,11 +224,9 @@ public class SysUserController extends BaseController {
     @RequestMapping("/searchUserLogin")
     public ModelAndView searchUserLogin(HttpServletRequest request, HttpServletResponse response, SysUserloginSearchVO sysUserloginSearchVO) {
         ModelAndView mv = new ModelAndView();
-        int recordCount = sysUserLoginService.listCount(sysUserloginSearchVO);// 获取查询总数
-        int pageIndex = WebUtil.getSafeInt(request.getParameter("pageIndex"), 1);// 获取当前页数
-        int pageSize = 10;//  每页记录数
+        int recordCount = sysUserLoginService.count(sysUserloginSearchVO);// 获取查询总数
         String url = createUserLoginUrl(sysUserloginSearchVO);
-        PageNavigate pageNavigate = new PageNavigate(url, pageIndex, pageSize, recordCount);//
+        PageNavigate pageNavigate = new PageNavigate(url, sysUserloginSearchVO.getPageIndex(), recordCount);//
         List<SysUserLogin> list = sysUserLoginService.list(sysUserloginSearchVO);
         mv.addObject("pageNavigate", pageNavigate);// 设置分页的变量
         mv.addObject("list", list);// 把获取的记录放到mv里面

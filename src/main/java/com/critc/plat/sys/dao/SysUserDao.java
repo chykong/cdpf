@@ -111,10 +111,10 @@ public class SysUserDao extends BaseDao<SysUser, SysUserSearchVO> {
      * @param sysUserSearchVO
      * @return
      */
-    public int listCount(SysUserSearchVO sysUserSearchVO) {
+    public int count(SysUserSearchVO sysUserSearchVO) {
         String sql = "select count(*) from t_sys_user where 1=1 ";
         sql += createSearchSql(sysUserSearchVO);
-        return listCount(sql, sysUserSearchVO);
+        return count(sql, sysUserSearchVO);
     }
 
     private String createSearchSql(SysUserSearchVO sysUserSearchVO) {

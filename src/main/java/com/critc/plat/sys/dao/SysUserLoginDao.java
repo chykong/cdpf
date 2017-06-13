@@ -43,9 +43,9 @@ public class SysUserLoginDao extends BaseDao<SysUserLogin, SysUserloginSearchVO>
      * @param userId
      * @return
      */
-    public int listCount(int userId) {
+    public int count(int userId) {
         String sql = "select count(*) from t_sys_userlogin where user_id=? ";
-        return listCount(sql, userId);
+        return count(sql, userId);
     }
 
 }

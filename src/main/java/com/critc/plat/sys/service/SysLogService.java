@@ -80,8 +80,8 @@ public class SysLogService {
      * @param sysLogSearchVO
      * @return
      */
-    public int listCount(SysLogSearchVO sysLogSearchVO) {
-        return sysLogDao.listCount(sysLogSearchVO);
+    public int count(SysLogSearchVO sysLogSearchVO) {
+        return sysLogDao.count(sysLogSearchVO);
     }
 
     /**

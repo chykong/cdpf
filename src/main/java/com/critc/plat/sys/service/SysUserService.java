@@ -90,8 +90,8 @@ public class SysUserService {
      * @param sysUserSearchVO
      * @return
      */
-    public int listCount(SysUserSearchVO sysUserSearchVO) {
-        return sysUserDao.listCount(sysUserSearchVO);
+    public int count(SysUserSearchVO sysUserSearchVO) {
+        return sysUserDao.count(sysUserSearchVO);
     }
 
 

@@ -56,10 +56,10 @@ public class SysLogDao extends BaseDao<SysLog, SysLogSearchVO> {
      * @param sysLogSearchVO
      * @return
      */
-    public int listCount(SysLogSearchVO sysLogSearchVO) {
+    public int count(SysLogSearchVO sysLogSearchVO) {
         String sql = "select count(*) from t_sys_log where 1=1 ";
         sql += createSearchSql(sysLogSearchVO);
-        return listCount(sql, sysLogSearchVO);
+        return count(sql, sysLogSearchVO);
     }
 
     private String createSearchSql(SysLogSearchVO sysLogSearchVO) {

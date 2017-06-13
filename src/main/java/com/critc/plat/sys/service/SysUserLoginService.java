@@ -45,8 +45,8 @@ public class SysUserLoginService {
      * @param sysUserloginSearchVO
      * @return
      */
-    public int listCount(SysUserloginSearchVO sysUserloginSearchVO) {
-        return sysUserLoginDao.listCount(sysUserloginSearchVO.getUserId());
+    public int count(SysUserloginSearchVO sysUserloginSearchVO) {
+        return sysUserLoginDao.count(sysUserloginSearchVO.getUserId());
     }
 
 }

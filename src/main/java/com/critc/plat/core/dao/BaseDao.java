@@ -168,7 +168,7 @@ public class BaseDao<T, S> {
      * @param sql
      * @return
      */
-    protected int listCount(String sql) {
+    protected int count(String sql) {
         return jdbcTemplate.queryForObject(sql, Integer.class);
     }
 
@@ -178,7 +178,7 @@ public class BaseDao<T, S> {
      * @param sql
      * @return
      */
-    protected int listCount(String sql, Object... objects) {
+    protected int count(String sql, Object... objects) {
         return jdbcTemplate.queryForObject(sql, objects, Integer.class);
     }
 
@@ -189,7 +189,7 @@ public class BaseDao<T, S> {
      * @param s
      * @return
      */
-    protected int listCount(String sql, S s) {
+    protected int count(String sql, S s) {
         return namedParameterJdbcTemplate.queryForObject(sql, new BeanPropertySqlParameterSource(s), Integer.class);
     }
 

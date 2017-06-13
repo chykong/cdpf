@@ -45,7 +45,7 @@ public class SysLogController extends BaseController {
         if (StringUtil.isNullOrEmpty(sysLogSearchVO.getEndDate()))//设置截止日期
             sysLogSearchVO.setEndDate(DateUtil.getSystemDate());
         ModelAndView mv = new ModelAndView();
-        int recordCount = sysLogService.listCount(sysLogSearchVO);// 获取查询总数
+        int recordCount = sysLogService.count(sysLogSearchVO);// 获取查询总数
         String url = createUrl(sysLogSearchVO);
         PageNavigate pageNavigate = new PageNavigate(url, sysLogSearchVO.getPageIndex(), recordCount);//
         List<SysLog> list = sysLogService.list(sysLogSearchVO);

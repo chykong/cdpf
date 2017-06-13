@@ -97,7 +97,7 @@ public class SysResourceDao extends BaseDao<SysResource, SysResource> {
      */
     public int getChildCount(int id) {
         String sql = "select count(*) from t_sys_resource where parent_id=? and type=1";
-        return listCount(sql, id);
+        return count(sql, id);
     }
 
     /**
