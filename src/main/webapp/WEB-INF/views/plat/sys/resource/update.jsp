@@ -176,8 +176,8 @@
         var treeObj = $.fn.zTree.getZTreeObj("tree");
         var nodes = treeObj.getSelectedNodes();
         if (nodes.length > 0) {
-            $("#parent_id").val(nodes[0].id);
-            $("#parent_name").val(nodes[0].name);
+            $("#parentId").val(nodes[0].id);
+            $("#parentName").val(nodes[0].name);
             $('#basic').modal('hide');
         }
         else return;
