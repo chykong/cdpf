@@ -282,7 +282,7 @@
                     <archive>
                         <addMavenDescriptor>false</addMavenDescriptor>
                     </archive>
-                    <warName>ua</warName>
+                    <warName>cdpf</warName>
                     <webResources>
                         <resource>
                             <directory>profiles/${package.environment}</directory>

@@ -39,7 +39,7 @@ public class BaseController {
             map.put("message", ex.getMessage());
             map.put("isError", true);
             map.put("exceptionName", ex.getMessage());
-            return new ModelAndView("exception", map);
+            return new ModelAndView("/plat/common/exception", map);
         }
     }
 

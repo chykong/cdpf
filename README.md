@@ -12,6 +12,7 @@ Critc Development Plat Framework 简称CDPF，是技术研发中心开发的基�
 - 持久层 JDBCTemplate
 - 缓存 EHCache 2.10.2
 - 数据连接池 druid 1.0.25
+- SiteMesh3
 - Json Jackson 2.5.4
 - 日志 logback 1.7.1
 - 服务端校验 hibernate-validator5.2.4
