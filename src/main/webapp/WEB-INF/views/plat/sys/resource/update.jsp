@@ -181,7 +181,6 @@
             $('#basic').modal('hide');
         }
         else return;
-
     }
 
     function showSelTree() {
